@@ -3,10 +3,17 @@ import Link from 'next/link';
 
 const headerStyles = css`
   display: flex;
+  align-items: center;
+  height: 50px;
   padding: 10px 15px;
-  background-color: #ddd;
-  a + a {
+
+  a {
     margin-left: 15px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    overflow: hidden;
   }
 `;
 
