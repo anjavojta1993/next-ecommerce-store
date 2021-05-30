@@ -1,3 +1,4 @@
+import '@fontsource/metropolis';
 import { css, Global } from '@emotion/react';
 import Head from 'next/head';
 
@@ -29,8 +30,7 @@ export default function App({ Component, pageProps }) {
             position: relative;
             min-height: 100vh;
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica,
-              Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+            font-family: 'Metropolis';
           }
         `}
       />

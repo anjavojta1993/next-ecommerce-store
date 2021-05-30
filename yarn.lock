@@ -350,6 +350,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fontsource/metropolis@^4.4.2":
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/@fontsource/metropolis/-/metropolis-4.4.2.tgz#c4f639c33ae86c6dc46745cd1f1d3b89067ccf1b"
+  integrity sha512-hvm63punJs6L7N8mAdAkENsv/qU//sBL5+H0cDnYO5+pImIrXffllhJOuySt6qFj7s4SRHkuFytSyx/t/1l+sw==
+
 "@hapi/accept@5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@hapi/accept/-/accept-5.0.2.tgz#ab7043b037e68b722f93f376afb05e85c0699523"
