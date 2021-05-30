@@ -13,13 +13,17 @@ const footerStyles = css`
   height: 50px;
 
   a {
-    margin-left: 15px;
+    margin-left: 30px;
     text-transform: uppercase;
     letter-spacing: 1px;
     text-decoration: none;
     color: white;
     font-weight: bold;
     overflow: hidden;
+
+    :first-of-type {
+      margin-left: 120px;
+    }
   }
 `;
 
