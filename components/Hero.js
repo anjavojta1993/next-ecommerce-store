@@ -2,10 +2,15 @@ import { css } from '@emotion/react';
 import Link from 'next/link';
 
 const heroStyles = css`
-  background-image: url('/hero-background.jpg');
+  background-image: url('images/hero-background.jpg');
+  opacity: 0.5;
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
-  width: 100vw;
+  height: 100vh;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
 `;
 
 export default function Hero() {

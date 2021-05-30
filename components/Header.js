@@ -5,7 +5,6 @@ const headerStyles = css`
   display: flex;
   padding: 10px 15px;
   background-color: #ddd;
-  margin-bottom: 20px;
   a + a {
     margin-left: 15px;
   }

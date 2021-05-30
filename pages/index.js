@@ -1,16 +1,19 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 import Hero from '../components/Hero';
-import Layout from '../components/Layout';
 
 export default function Home() {
   return (
-    <Layout>
+    <>
       <Head>
         <title>Home</title>
       </Head>
+      <Header />
       <Hero />
-    </Layout>
+      <Footer />
+    </>
   );
 }
