@@ -9,6 +9,10 @@ export const darkGreen = '#0E2D12';
 export const lightGreen = '#738B35';
 export const lightGrey = '#68666B';
 
+const contentWrapper = css`
+  padding-bottom: 2.5rem;
+`;
+
 export default function App({ Component, pageProps }) {
   return (
     <>
@@ -22,6 +26,8 @@ export default function App({ Component, pageProps }) {
           }
           body {
             /* Remove the default margin on the body */
+            position: relative;
+            min-height: 100vh;
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica,
               Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
@@ -32,7 +38,7 @@ export default function App({ Component, pageProps }) {
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <Component css={contentWrapper} {...pageProps} />
     </>
   );
 }
