@@ -1,17 +1,24 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
+import { darkGrey } from '../pages/_app';
 
 const footerStyles = css`
   display: flex;
+  align-items: center;
   padding: 10px 15px;
-  background-color: #ddd;
+  background-color: ${darkGrey};
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 2.5rem;
+  height: 50px;
 
-  a + a {
+  a {
     margin-left: 15px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    overflow: hidden;
   }
 `;
 
