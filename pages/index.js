@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import Hero from '../components/Hero';
 import Layout from '../components/Layout';
 
 export default function Home() {
@@ -9,7 +10,7 @@ export default function Home() {
       <Head>
         <title>Home</title>
       </Head>
-      <h1>Home page</h1>
+      <Hero />
     </Layout>
   );
 }

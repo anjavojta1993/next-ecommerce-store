@@ -2,13 +2,10 @@ import { css } from '@emotion/react';
 import Link from 'next/link';
 
 const heroStyles = css`
-  display: flex;
-  padding: 10px 15px;
-  background-color: #ddd;
-  margin-bottom: 20px;
-  a + a {
-    margin-left: 15px;
-  }
+  background-image: url('/hero-background.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
 `;
 
 export default function Hero() {
