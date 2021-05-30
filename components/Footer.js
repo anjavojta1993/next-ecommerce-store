@@ -15,6 +15,7 @@ const footerStyles = css`
   a {
     margin-left: 15px;
     text-transform: uppercase;
+    letter-spacing: 1px;
     text-decoration: none;
     color: white;
     font-weight: bold;

@@ -10,6 +10,7 @@ const headerStyles = css`
   a {
     margin-left: 15px;
     text-transform: uppercase;
+    letter-spacing: 1px;
     text-decoration: none;
     color: black;
     font-weight: bold;
