@@ -1,6 +1,8 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
 
+// import logo from '../public/images/logo.svg';
+
 const headerStyles = css`
   display: flex;
   align-items: center;
@@ -30,6 +32,7 @@ export default function Header() {
       <Link href="/about">
         <a>About</a>
       </Link>
+      <span>{/* <img src={logo} alt="logo with leaf" /> */}</span>
     </header>
   );
 }
