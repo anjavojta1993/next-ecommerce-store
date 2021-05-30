@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import { css } from '@emotion/react';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { darkBrown, lightRose } from '../pages/_app';
 
 const heroStyles = css`
@@ -32,19 +32,19 @@ const heroStyles = css`
 
 const heroHeadingContainer = css`
   position: absolute;
-  bottom: 10%;
+  bottom: 15%;
   left: 10%;
   width: 600px;
   height: 350px;
 
   h1 {
     font-size: 60px;
-    line-height: 1.2em;
+    line-height: 1.1em;
     font-family: 'Cedarville Cursive', cursive;
   }
 
   h2 {
-    line-height: 1.2em;
+    line-height: 1.3em;
     letter-spacing: 1px;
   }
 
@@ -67,6 +67,7 @@ const heroHeadingContainer = css`
 `;
 
 export default function Hero() {
+  const router = useRouter();
   return (
     <>
       <head>
@@ -98,7 +99,9 @@ export default function Hero() {
             Get locally sourced, organic herbs delivered to your door and watch
             them grow from your home.
           </h2>
-          <button>Shop now</button>
+          <button type="button" onClick={() => router.push('/products/')}>
+            Shop now
+          </button>
         </div>
       </div>
     </>
