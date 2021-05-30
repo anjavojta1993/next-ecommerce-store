@@ -32,23 +32,25 @@ const heroStyles = css`
 
 const heroHeadingContainer = css`
   position: absolute;
-  bottom: 15%;
+  bottom: 10%;
   left: 10%;
   width: 600px;
   height: 350px;
 
   h1 {
-    font-size: 60px;
+    font-size: 50px;
     line-height: 1.1em;
     font-family: 'Cedarville Cursive', cursive;
   }
 
   h2 {
+    font-size: 24px;
     line-height: 1.3em;
     letter-spacing: 1px;
   }
 
   button {
+    color: white;
     background-color: ${lightRose};
     font-size: 14px;
     font-weight: 900;
