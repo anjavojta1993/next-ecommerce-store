@@ -1,6 +1,14 @@
 import { css, Global } from '@emotion/react';
 import Head from 'next/head';
 
+// color palette of application
+
+export const darkBrown = '#914220';
+export const lightRose = '#D79167';
+export const darkGreen = '#0E2D12';
+export const lightGreen = '#738B35';
+export const lightGrey = '#68666B';
+
 export default function App({ Component, pageProps }) {
   return (
     <>
