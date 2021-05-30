@@ -4,11 +4,11 @@ import Head from 'next/head';
 
 // color palette of application
 
-export const darkBrown = '#914220';
-export const lightRose = '#D79167';
-export const darkGreen = '#0E2D12';
-export const lightGreen = '#738B35';
-export const lightGrey = '#68666B';
+export const darkBrown = '#6A300C';
+export const lightRose = '#DF846E';
+export const darkGreen = '#293A11';
+export const lightGreen = '#858D3B';
+export const darkGrey = '#68666B';
 
 const contentWrapper = css`
   padding-bottom: 2.5rem;
