@@ -5,9 +5,7 @@ import { darkBrown, lightRose } from '../pages/_app';
 
 const heroStyles = css`
   position: relative;
-  height: 100vh;
-  width: 100%;
-  display: flex;
+  height: 90vh;
   align-items: center;
   justify-content: center;
   display: flex;
