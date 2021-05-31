@@ -9,7 +9,11 @@ export default function SingleProduct(props) {
       </Head>
 
       <h1>{props.product.name}</h1>
-      <div>product id: {props.product.id}</div>
+      <div>
+        <img src={props.product.image} alt="herb" />
+      </div>
+      <div>{props.product.description}</div>
+      <div>{props.product.price}</div>
     </Layout>
   );
 }
