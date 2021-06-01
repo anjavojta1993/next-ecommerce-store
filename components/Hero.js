@@ -38,7 +38,7 @@ const heroHeadingContainer = css`
   h1 {
     font-size: 50px;
     line-height: 1.1em;
-    font-family: 'Cedarville Cursive', cursive;
+    font-family: 'Cedarville Cursive';
   }
 
   h2 {

@@ -1,5 +1,25 @@
+import { css } from '@emotion/react';
 import Head from 'next/head';
 import Layout from '../../components/Layout';
+import { darkBrown, lightRose } from '../../pages/_app';
+
+const buttonStyles = css`
+  color: white;
+  background-color: ${lightRose};
+  font-size: 14px;
+  font-weight: 900;
+  border: none;
+  border-radius: 5px;
+  padding: 20px 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  :hover {
+    background-color: ${darkBrown};
+    color: white;
+    cursor: pointer;
+  }
+`;
 
 export default function SingleProduct(props) {
   return (
@@ -14,6 +34,7 @@ export default function SingleProduct(props) {
       </div>
       <div>{props.product.description}</div>
       <div>{props.product.price}</div>
+      <button css={buttonStyles}>Add to cart</button>
     </Layout>
   );
 }
