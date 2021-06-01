@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
 import { darkBrown, lightRose } from '../pages/_app';
+import { quantity } from '../pages/products/[productId]';
 import logo from '../public/images/logo-green.svg';
 import cart from '../public/images/shopping-cart.png';
 
@@ -76,7 +77,7 @@ export default function Header() {
           alt="shopping cart with counter"
         />
       </span>
-      <span css={cartCount}>0</span>
+      <span css={cartCount}>${quantity}</span>
     </header>
   );
 }

@@ -1,7 +1,7 @@
 import cookies from 'js-cookie';
 
-export default function getQuantityCookieValue() {
-  const cookieValue = cookies.getJSON('quantity');
+export function getQuantityCookieValue() {
+  const cookieValue = cookies.getJSON('cart');
   return (
     // Test if the cookie value is an array
     Array.isArray(cookieValue)
@@ -16,7 +16,7 @@ export function addQuantityByProductId(productId) {
   const newCookieValue = [...getQuantityCookieValue()];
 
   const quantityProductInCookie = newCookieValue.find(
-    (user) => user.id === productId,
+    (product) => product.id === productId,
   );
 
   if (quantityProductInCookie) {
@@ -28,7 +28,7 @@ export function addQuantityByProductId(productId) {
     });
   }
 
-  cookies.set('quantity', newCookieValue);
+  cookies.set('cart', newCookieValue);
 }
 
 export function parseCookieValue(value, defaultValue) {

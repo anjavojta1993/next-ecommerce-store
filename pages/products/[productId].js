@@ -1,8 +1,14 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
+import { useState } from 'react';
 import Layout from '../../components/Layout';
 import { darkBrown, lightRose } from '../../pages/_app';
-import { addQuantityByProductId, parseCookieValue } from '../../util/cookies';
+import {
+  addQuantityByProductId,
+  cookieValue,
+  newCookieValue,
+  parseCookieValue,
+} from '../../util/cookies';
 
 const buttonStyles = css`
   color: white;
@@ -22,7 +28,21 @@ const buttonStyles = css`
   }
 `;
 
+// function to update counter in cart --> loop over array with reduce
+function getTotalQuantity() {
+  const initialValue = 0;
+  const totalQuantity = newCookieValue.reduce(function (
+    accumulator,
+    currentValue,
+  ) {
+    return accumulator + currentValue.quantity;
+  },
+  initialValue);
+}
+
 export default function SingleProduct(props) {
+  const [quantity, setQuantity] = useState(0);
+
   return (
     <Layout>
       <Head>
@@ -47,6 +67,7 @@ export default function SingleProduct(props) {
           // Instead, use the js-cookie library
           // to set and get your cookies
           addQuantityByProductId(props.product.id);
+          setQuantity(getTotalQuantity(props.product.quantity));
         }}
       >
         Add to cart
