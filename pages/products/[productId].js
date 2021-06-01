@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import Layout from '../../components/Layout';
 import { darkBrown, lightRose } from '../../pages/_app';
-import { parseCookieValue } from '../../util/cookies';
+import { addQuantityByProductId, parseCookieValue } from '../../util/cookies';
 
 const buttonStyles = css`
   color: white;
@@ -35,7 +35,22 @@ export default function SingleProduct(props) {
       </div>
       <div>{props.product.description}</div>
       <div>{props.product.price}</div>
-      <button css={buttonStyles}>Add to cart</button>
+      <button
+        css={buttonStyles}
+        onClick={() => {
+          // Avoid using the document.cookie
+          // API - it is built in a strange
+          // way and it's hard to use
+          //
+          // document.cookie = ''
+
+          // Instead, use the js-cookie library
+          // to set and get your cookies
+          addQuantityByProductId(props.product.id);
+        }}
+      >
+        Add to cart
+      </button>
     </Layout>
   );
 }

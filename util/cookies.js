@@ -20,7 +20,7 @@ export function addQuantityByProductId(productId) {
   );
 
   if (quantityProductInCookie) {
-    quantityProductInCookie.claps = quantityProductInCookie.claps + 1;
+    quantityProductInCookie.quantity = quantityProductInCookie.quantity + 1;
   } else {
     newCookieValue.push({
       id: productId,
