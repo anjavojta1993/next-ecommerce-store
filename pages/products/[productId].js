@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import Layout from '../../components/Layout';
 import { darkBrown, lightRose } from '../../pages/_app';
+import { parseCookieValue } from '../../util/cookies';
 
 const buttonStyles = css`
   color: white;
@@ -43,12 +44,16 @@ export async function getServerSideProps(context) {
   // The name inside the square brackets of the filename
   // is inside of the `context.query` object
   const productId = context.query.productId;
+
+  console.log('cookies', context.req.cookies);
+
   const { products } = await import('../../util/database');
   const product = products.find((p) => p.id === productId);
 
   return {
     props: {
       product: product,
+      quantity: parseCookieValue(context.req.cookies.quantity, []),
     },
   };
 }
