@@ -1,6 +1,6 @@
 import cookies from 'js-cookie';
 
-export function getQuantityCookieValue() {
+export function getCartCookieValue() {
   const cookieValue = cookies.getJSON('cart');
   return (
     // Test if the cookie value is an array
@@ -24,11 +24,12 @@ export function addQuantityByProductId(productId) {
   } else {
     newCookieValue.push({
       id: productId,
-      quantity: 0,
+      quantity: 1,
     });
   }
 
   cookies.set('cart', newCookieValue);
+  return newCookieValue;
 }
 
 export function parseCookieValue(value, defaultValue) {
