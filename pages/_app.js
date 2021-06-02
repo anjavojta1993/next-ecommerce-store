@@ -1,6 +1,8 @@
 import '@fontsource/metropolis';
 import { css, Global } from '@emotion/react';
 import Head from 'next/head';
+import {useState, useEffect} from 'react';
+
 
 // color palette of application
 
@@ -15,6 +17,14 @@ const contentWrapper = css`
 `;
 
 export default function App({ Component, pageProps }) {
+  const [shoppingCart, setShoppingCart] = useState([]);
+
+// Updating the state variable after the page loads,
+  // so that we don't run into server-side-rendering inconcistencies
+useEffect(() => {
+    setShoppingCart(getCartCookieValue());
+  }, []);
+
   return (
     <>
       <Global
@@ -38,7 +48,10 @@ export default function App({ Component, pageProps }) {
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component css={contentWrapper} {...pageProps} />
+      <Component shoppingCart={shoppingCart}
+      // passing props to use it in all components of other pages
+        setShoppingCart={setShoppingCart}
+        css={contentWrapper} {...pageProps} />
     </>
   );
 }
