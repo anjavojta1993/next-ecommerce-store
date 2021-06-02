@@ -54,7 +54,8 @@ const headerStyles = css`
   }
 `;
 
-export default function Header() {
+export default function Header(props) {
+
   return (
     <header css={headerStyles}>
       <Link href="/">
@@ -77,7 +78,10 @@ export default function Header() {
           alt="shopping cart with counter"
         />
       </span>
-      <span css={cartCount}>${quantity}</span>
+      <span css={cartCount}>
+      {props.shoppingCart
+                .map((p) => p.quantity)
+                .reduce((total, amount) => total + amount, 0)}</span>
     </header>
   );
 }

@@ -85,7 +85,9 @@ const buttonContainer = css`
 export default function Products(props) {
   const router = useRouter();
   return (
-    <Layout>
+    <Layout
+    shoppingCart={props.shoppingCart}
+        setShoppingCart={props.setShoppingCart}>
       <Head>
         <title>Products</title>
       </Head>
