@@ -4,9 +4,12 @@ import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
 import { darkBrown, lightRose } from '../../pages/_app';
 
-const productStyles = css`
+const pageContainer = css`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
   background-color: purple;
   margin-top: 25px;
   margin: 0 auto;
@@ -22,16 +25,21 @@ const productStyles = css`
 const productsContainer = css`
   display: flex;
   justify-content: center;
+  width: 100vw;
   background-color: green;
-  flex-flow: row-wrap;
+  /* flex-flow: row-wrap;
+  align-content: space-between; */
 `;
 
-const productsContainerWrapper = css`
+const singleProductContainer = css`
   display: flex;
-  width: 800px;
-  height: 300px;
+  align-items: center;
+  flex-direction: column;
+  /* width: 400px;
+  height: 300px; */
   justify-content: center;
-  margin-right: 40px;
+  margin-left: 40px;
+  //margin-right: 40px;
   background-color: red;
 `;
 
@@ -40,6 +48,7 @@ const imageContainer = css`
 
   > img {
     border-radius: 5px;
+    margin-bottom: 10px;
     width: 230px;
     height: 200px;
     box-shadow: 0 7px 17px rgb(0 0 0 / 13%);
@@ -48,14 +57,15 @@ const imageContainer = css`
 
 const headingContainer = css`
   display: flex;
-
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 900;
   line-height: 1.5em;
+  margin-bottom: 10px;
 `;
 
 const priceContainer = css`
-  font-size: 14px;
+  margin-bottom: 10px;
+  font-size: 16px;
   line-height: 1.5em;
 `;
 
@@ -70,6 +80,7 @@ const buttonContainer = css`
     padding: 20px 30px;
     letter-spacing: 2px;
     text-transform: uppercase;
+    margin-bottom: 10px;
 
     :hover {
       background-color: ${darkBrown};
@@ -91,36 +102,36 @@ export default function Products(props) {
       <Head>
         <title>Products</title>
       </Head>
-      <section css={productStyles}>
+      <section css={pageContainer}>
         <h1>Our selected herbs</h1>
         {/* Start of products container */}
-      </section>
-      <section>
-        <div css={productsContainer}>
-          <div css={productsContainerWrapper}>
+        <section>
+          <div css={productsContainer}>
             {props.products.map((product) => {
               return (
                 <div key={product.id}>
-                  <div css={imageContainer}>
-                    <img src={product.image} alt="basil pot" />
-                  </div>
-                  <div css={headingContainer}>{product.name}</div>
-                  <div css={priceContainer}>{product.price}</div>
-                  <div css={buttonContainer}>
-                    <button
-                      type="button"
-                      onClick={() => router.push(`/products/${product.id}`)}
-                    >
-                      Learn more
-                    </button>
-                  </div>
+                  <div css={singleProductContainer}>
+                    <div css={imageContainer}>
+                      <img src={product.image} alt={product.name} />
+                    </div>
+                    <div css={headingContainer}>{product.name}</div>
+                    <div css={priceContainer}>{product.price}</div>
+                    <div css={buttonContainer}>
+                      <button
+                        type="button"
+                        onClick={() => router.push(`/products/${product.id}`)}
+                      >
+                        Learn more
+                      </button>
+                    </div>
 
-                  {/* end of products container */}
+                    {/* end of products container */}
+                  </div>
                 </div>
               );
             })}
           </div>
-        </div>
+        </section>
       </section>
     </Layout>
   );

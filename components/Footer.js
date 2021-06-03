@@ -7,8 +7,8 @@ const footerStyles = css`
   align-items: center;
   padding: 10px 15px;
   background-color: ${darkGrey};
-  /* position: absolute;
-  bottom: 0; */
+  position: absolute;
+  bottom: 0;
   width: 100%;
   height: 50px;
 

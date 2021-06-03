@@ -77,9 +77,10 @@ export default function Header(props) {
         />
       </span>
       <span css={cartCount}>
-        {props.shoppingCart
+        {/* // not yet working */}
+        {/* {props.shoppingCart
           .map((p) => p.quantity)
-          .reduce((total, amount) => total + amount, 0)}
+          .reduce((total, amount) => total + amount, 0)} */}
       </span>
     </header>
   );
