@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
 import { darkBrown, lightRose } from '../../pages/_app';
@@ -86,8 +85,9 @@ export default function Products(props) {
   const router = useRouter();
   return (
     <Layout
-    shoppingCart={props.shoppingCart}
-        setShoppingCart={props.setShoppingCart}>
+      shoppingCart={props.shoppingCart}
+      setShoppingCart={props.setShoppingCart}
+    >
       <Head>
         <title>Products</title>
       </Head>

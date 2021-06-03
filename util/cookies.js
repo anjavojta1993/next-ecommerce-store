@@ -13,10 +13,10 @@ export function getCartCookieValue() {
 }
 
 export function addQuantityByProductId(productId) {
-  const newCookieValue = [...getQuantityCookieValue()];
+  const newCookieValue = [...getCartCookieValue()];
 
   const quantityProductInCookie = newCookieValue.find(
-    (product) => product.id === productId,
+    (prod) => prod.id === productId,
   );
 
   if (quantityProductInCookie) {

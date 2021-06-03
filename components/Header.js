@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
 import { darkBrown, lightRose } from '../pages/_app';
-import { quantity } from '../pages/products/[productId]';
 import logo from '../public/images/logo-green.svg';
 import cart from '../public/images/shopping-cart.png';
 
@@ -55,7 +54,6 @@ const headerStyles = css`
 `;
 
 export default function Header(props) {
-
   return (
     <header css={headerStyles}>
       <Link href="/">
@@ -79,9 +77,10 @@ export default function Header(props) {
         />
       </span>
       <span css={cartCount}>
-      {props.shoppingCart
-                .map((p) => p.quantity)
-                .reduce((total, amount) => total + amount, 0)}</span>
+        {props.shoppingCart
+          .map((p) => p.quantity)
+          .reduce((total, amount) => total + amount, 0)}
+      </span>
     </header>
   );
 }
