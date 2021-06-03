@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
-import { darkBrown, lightRose } from '../pages/_app';
+import { darkBrown, rose } from '../pages/_app';
 import logo from '../public/images/logo-green.svg';
 import cart from '../public/images/shopping-cart.png';
 
@@ -15,7 +15,7 @@ const shoppingCartStyles = css`
 
 const cartCount = css`
   position: absolute;
-  background: ${lightRose};
+  background: ${rose};
   color: #ffffff;
   min-width: 16px;
   height: 16px;
