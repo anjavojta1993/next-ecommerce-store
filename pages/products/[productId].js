@@ -1,12 +1,12 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Layout from '../../components/Layout';
-import { darkBrown, lightRose } from '../../pages/_app';
+import { darkBrown, rose } from '../../pages/_app';
 import { addQuantityByProductId, parseCookieValue } from '../../util/cookies';
 
 const buttonStyles = css`
   color: white;
-  background-color: ${lightRose};
+  background-color: ${rose};
   font-size: 14px;
   font-weight: 900;
   border: none;
