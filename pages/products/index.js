@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
-import { darkBrown, lightRose } from '../../pages/_app';
+import { darkBrown, lightRose, rose } from '../../pages/_app';
 
 const pageContainer = css`
   display: flex;
@@ -10,23 +10,52 @@ const pageContainer = css`
   height: 100vh;
   width: 100vw;
   align-items: center;
-  background-color: purple;
+  //background-color: ${lightRose};
   margin-top: 25px;
   margin: 0 auto;
+`;
 
-  > h1 {
-    justify-content: center;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    font-weight: 900;
+const heroContainer = css`
+  position: relative;
+  width: 100vw;
+  //height: 50vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-bottom: 50px;
+
+  ::before {
+    content: '';
+    background-image: url('images/hero-product-overview.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 50vh;
+    position: relative;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
   }
+`;
+
+const heroHeading = css`
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 25px;
+  font-size: 36px;
+  text-transform: uppercase;
+  font-weight: 900;
 `;
 
 const productsContainer = css`
   display: flex;
   justify-content: center;
   width: 100vw;
-  background-color: green;
+
   /* flex-flow: row-wrap;
   align-content: space-between; */
 `;
@@ -38,9 +67,9 @@ const singleProductContainer = css`
   /* width: 400px;
   height: 300px; */
   justify-content: center;
-  margin-left: 40px;
+  margin-left: 60px;
+
   //margin-right: 40px;
-  background-color: red;
 `;
 
 const imageContainer = css`
@@ -50,7 +79,8 @@ const imageContainer = css`
     border-radius: 5px;
     margin-bottom: 10px;
     width: 230px;
-    height: 200px;
+    height: 300px;
+    object-fit: cover;
     box-shadow: 0 7px 17px rgb(0 0 0 / 13%);
   }
 `;
@@ -72,11 +102,11 @@ const priceContainer = css`
 const buttonContainer = css`
   button {
     color: white;
-    background-color: ${lightRose};
-    font-size: 14px;
-    font-weight: 900;
+    background-color: ${rose};
+    font-size: 16px;
+    font-weight: 300;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 20px 30px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -102,8 +132,12 @@ export default function Products(props) {
       <Head>
         <title>Products</title>
       </Head>
+
+      <div css={heroContainer}>
+        <div css={heroHeading}>Our selected herbs</div>
+      </div>
+
       <section css={pageContainer}>
-        <h1>Our selected herbs</h1>
         {/* Start of products container */}
         <section>
           <div css={productsContainer}>
