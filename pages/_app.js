@@ -7,10 +7,12 @@ import { getCartCookieValue } from '../util/cookies';
 // color palette of application
 
 export const darkBrown = '#6A300C';
-export const lightRose = '#DF846E';
+export const rose = '#DF846E';
+export const lightRose = '#FBF1EE';
 export const darkGreen = '#293A11';
 export const lightGreen = '#858D3B';
 export const darkGrey = '#68666B';
+export const lightGrey = '#D6D5D7'
 
 const contentWrapper = css`
   padding-bottom: 2.5rem;
