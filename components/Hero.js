@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
-import { darkBrown, lightRose } from '../pages/_app';
+import { darkBrown, rose } from '../pages/_app';
 
 const heroStyles = css`
   position: relative;
@@ -36,7 +36,7 @@ const heroHeadingContainer = css`
   height: 350px;
 
   h1 {
-    font-size: 50px;
+    font-size: 48px;
     line-height: 1.1em;
     font-family: 'Cedarville Cursive';
   }
@@ -49,11 +49,11 @@ const heroHeadingContainer = css`
 
   button {
     color: white;
-    background-color: ${lightRose};
-    font-size: 14px;
-    font-weight: 900;
+    background-color: ${rose};
+    font-size: 16px;
+    font-weight: 300;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 20px 30px;
     letter-spacing: 2px;
     text-transform: uppercase;
