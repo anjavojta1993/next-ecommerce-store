@@ -40,15 +40,35 @@ const headerStyles = css`
 
   a {
     margin-left: 30px;
+    position: relative;
     text-transform: uppercase;
     letter-spacing: 1px;
     text-decoration: none;
     color: black;
     font-weight: bold;
-    overflow: hidden;
+    //overflow: hidden;
 
     :first-of-type {
       margin-left: 120px;
+    }
+
+    &::after {
+      display: inline-block;
+      content: ' ';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: -4px;
+      left: 0px;
+      background-color: black;
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
     }
   }
 `;
@@ -78,9 +98,9 @@ export default function Header(props) {
       </span>
       <span css={cartCount}>
         {/* // not yet working */}
-        {/* {props.shoppingCart
+        {props.shoppingCart
           .map((p) => p.quantity)
-          .reduce((total, amount) => total + amount, 0)} */}
+          .reduce((total, amount) => total + amount, 0)}
       </span>
     </header>
   );
