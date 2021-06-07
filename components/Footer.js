@@ -1,6 +1,9 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
 import { lightGrey } from '../pages/_app';
+import facebook from '../public/images/facebook.png';
+import instagram from '../public/images/instagram.png';
+import twitter from '../public/images/twitter.png';
 
 const footerStyles = css`
   display: flex;
@@ -27,6 +30,18 @@ const footerStyles = css`
   }
 `;
 
+const socialMediaStyles = css`
+  :first-of-type {
+    margin-left: 220px;
+  }
+
+  > img {
+    border-radius: 5px;
+    margin-left: 20px;
+    height: 24px;
+  }
+`;
+
 export default function Footer() {
   return (
     <footer css={footerStyles}>
@@ -36,6 +51,11 @@ export default function Footer() {
       <Link href="/contact">
         <a>Contact</a>
       </Link>
+      <span css={socialMediaStyles}>
+        <img src={facebook} alt="shopping cart with counter" />
+        <img src={instagram} alt="shopping cart with counter" />
+        <img src={twitter} alt="shopping cart with counter" />
+      </span>
     </footer>
   );
 }
