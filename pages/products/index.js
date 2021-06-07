@@ -18,26 +18,28 @@ const pageContainer = css`
 const heroContainer = css`
   position: relative;
   width: 100vw;
-  //height: 50vh;
+  height: 50vh;
   align-items: center;
   justify-content: center;
   display: flex;
   margin-bottom: 50px;
+  z-index: 2;
 
   ::before {
-    content: '';
+    content: ' ';
     background-image: url('images/hero-product-overview.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     width: 100vw;
     height: 50vh;
-    position: relative;
+    position: absolute;
     top: 0px;
     right: 0px;
     bottom: 0px;
     left: 0px;
     opacity: 0.5;
+    z-index: -1;
   }
 `;
 
@@ -46,7 +48,7 @@ const heroHeading = css`
   justify-content: center;
   padding-top: 50px;
   padding-bottom: 25px;
-  font-size: 36px;
+  font-size: 46px;
   text-transform: uppercase;
   font-weight: 900;
 `;
