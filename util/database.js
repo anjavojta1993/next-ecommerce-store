@@ -31,8 +31,20 @@ export async function getProducts() {
   return products.map((product) => camelcaseKeys(product));
 }
 
+export async function getAllProducts() {
+  const products = await sql`
+  SELECT
+  *
+  FROM
+  products
+  `;
+  return products.map((product) => camelcaseKeys(product));
+}
+
 export async function getProductById(id) {
-  const productsList = await sql`
+  if (isNaN(parseInt(id))) return undefined;
+
+  const products = await sql`
   SELECT
   *
   FROM
@@ -40,35 +52,5 @@ export async function getProductById(id) {
   WHERE
   id = ${id}
   `;
-  return productsList.map((product) => camelcaseKeys(product))[0];
+  return products.map((product) => camelcaseKeys(product))[0];
 }
-
-export const products = [
-  {
-    id: '1',
-    name: 'Organic Basil',
-    price: '2,99',
-    currency: '€',
-    image: '/images/basil.jpg',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  },
-  {
-    id: '2',
-    name: 'Organic Rosemary',
-    price: '3,99',
-    currency: '€',
-    image: '/images/rosemary.jpg',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  },
-  {
-    id: '3',
-    name: 'Organic Sage',
-    price: '3,99',
-    currency: '€',
-    image: '/images/sage.jpg',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  },
-];
