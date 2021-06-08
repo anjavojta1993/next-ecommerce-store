@@ -191,14 +191,12 @@ export async function getServerSideProps(context) {
   // is inside of the `context.query` object
   const productId = context.query.productId;
 
-  console.log('cookies', context.req.cookies);
-
-  const { products } = await import('../../util/database');
-  const product = products.find((p) => p.id === productId);
+  const { getProductById } = await import('../../util/database');
+  const product = await getProductById(productId);
 
   return {
     props: {
-      product: product,
+      product: product || null,
       quantity: parseCookieValue(context.req.cookies.quantity, []),
     },
   };
