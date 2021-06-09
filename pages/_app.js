@@ -12,13 +12,14 @@ export const lightRose = '#FBF1EE';
 export const darkGreen = '#293A11';
 export const lightGreen = '#858D3B';
 export const darkGrey = '#68666B';
-export const lightGrey = '#D6D5D7'
+export const lightGrey = '#D6D5D7';
 
 const contentWrapper = css`
   padding-bottom: 2.5rem;
 `;
 
 function App({ Component, pageProps }) {
+  // variable for the cookies which include quantity and id of products
   const [shoppingCart, setShoppingCart] = useState([]);
 
   // Updating the state variable after the page loads,

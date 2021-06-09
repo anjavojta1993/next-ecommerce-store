@@ -1,7 +1,8 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
+import { useState } from 'react';
 import Layout from '../../components/Layout';
-import { darkBrown, lightGrey, lightRose, rose } from '../../pages/_app';
+import { darkBrown, lightGrey, rose } from '../../pages/_app';
 import { addQuantityByProductId, parseCookieValue } from '../../util/cookies';
 
 const pageContainer = css`
@@ -61,6 +62,15 @@ const rightContainer = css`
 const buttonContainer = css`
   display: flex;
   justify-content: center;
+`;
+
+const userInputContainer = css`
+  font-size: 14px;
+  font-weight: 900;
+  border: none;
+  border-radius: 5px;
+  padding: 20px 30px;
+  letter-spacing: 2px;
 `;
 
 const buttonStyles = css`
@@ -130,6 +140,15 @@ const listStylesContainer = css`
 `;
 
 export default function SingleProduct(props) {
+  // create useState for dropdown quantity selection user
+
+  const [userQuantitySelection, setUserQuantitySelection] = useState('1');
+
+  // event handler function for updating the selected quantity by user
+
+  function handleChangeQuantity(event) {
+    setUserQuantitySelection(event.target.value);
+  }
   return (
     // pass props to Layout
     <Layout
@@ -161,20 +180,44 @@ export default function SingleProduct(props) {
               <li>&#10003; &nbsp; 2 - 5 working days delivery </li>
             </ul>
           </div>
-          <div css={priceContainer}>{props.product.price}</div>
+          <div css={priceContainer}>
+            {props.product.price} {props.product.currency}
+          </div>
+          <div css={userInputContainer}>
+            <label htmlFor="quantity">Quantity:</label>
+            <select
+              onChange={handleChangeQuantity}
+              value={userQuantitySelection}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+            {/* <input
+              type="dropdown"
+              id="quantity"
+              placeholder="1"
+              value={image}
+              onChange={handleChangeImage}
+            /> */}
+          </div>
           <div css={buttonContainer}>
             <button
               css={buttonStyles}
               onClick={() => {
-                // Avoid using the document.cookie
-                // API - it is built in a strange
-                // way and it's hard to use
-                //
-                // document.cookie = ''
-
-                // Instead, use the js-cookie library
-                // to set and get your cookies
-                props.setShoppingCart(addQuantityByProductId(props.product.id));
+                props.setShoppingCart(
+                  addQuantityByProductId(
+                    props.product.id,
+                    Number(userQuantitySelection),
+                  ),
+                );
               }}
             >
               Add to cart

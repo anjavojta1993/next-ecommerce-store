@@ -12,7 +12,7 @@ export function getCartCookieValue() {
   );
 }
 
-export function addQuantityByProductId(productId) {
+export function addQuantityByProductId(productId, userQuantitySelection) {
   const newCookieValue = [...getCartCookieValue()];
 
   const quantityProductInCookie = newCookieValue.find(
@@ -20,11 +20,12 @@ export function addQuantityByProductId(productId) {
   );
 
   if (quantityProductInCookie) {
-    quantityProductInCookie.quantity = quantityProductInCookie.quantity + 1;
+    quantityProductInCookie.quantity =
+      quantityProductInCookie.quantity + userQuantitySelection;
   } else {
     newCookieValue.push({
       id: productId,
-      quantity: 1,
+      quantity: userQuantitySelection,
     });
   }
 
