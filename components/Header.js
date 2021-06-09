@@ -90,11 +90,15 @@ export default function Header(props) {
       </span>
 
       <span>
-        <img
-          css={shoppingCartStyles}
-          src={cart}
-          alt="shopping cart with counter"
-        />
+        <Link href="/cart">
+          <a>
+            <img
+              css={shoppingCartStyles}
+              src={cart}
+              alt="shopping cart with counter"
+            />
+          </a>
+        </Link>
       </span>
       <span css={cartCount}>
         {/* // not yet working */}
