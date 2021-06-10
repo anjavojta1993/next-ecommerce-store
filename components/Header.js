@@ -101,7 +101,7 @@ export default function Header(props) {
         </Link>
       </span>
       <span css={cartCount}>
-        {/* // not yet working */}
+        {/* show counter of product quantity in header */}
         {props.shoppingCart
           .map((p) => p.quantity)
           .reduce((total, amount) => total + amount, 0)}
