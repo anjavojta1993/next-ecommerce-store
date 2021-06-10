@@ -1,7 +1,7 @@
 const products = [
   {
     name: 'Organic Basil',
-    price: '2,99',
+    price: '299',
     currency: '€',
     image: '/images/basil.jpg',
     description:
@@ -9,7 +9,7 @@ const products = [
   },
   {
     name: 'Organic Rosemary',
-    price: '3,99',
+    price: '399',
     currency: '€',
     image: '/images/rosemary.jpg',
     description:
@@ -17,7 +17,7 @@ const products = [
   },
   {
     name: 'Organic Sage',
-    price: '3,99',
+    price: '399',
     currency: '€',
     image: '/images/sage.jpg',
     description:
@@ -39,17 +39,8 @@ exports.up = async function up(sql) {
 };
 
 exports.down = async function down(sql) {
-  for (const product of products) {
-    await sql`
+  await sql`
       DELETE FROM
         products
-      WHERE
-        id = ${product.id} AND
-        name = ${product.name} AND
-				price = ${product.price} AND
-				currency = ${product.currency} AND
-				image = ${product.image} AND
-				description = ${product.description}
     `;
-  }
 };
