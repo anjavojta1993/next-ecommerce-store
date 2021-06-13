@@ -41,6 +41,7 @@ function App({ Component, pageProps }) {
           body {
             /* Remove the default margin on the body */
             position: relative;
+            display: flex;
             min-height: 100vh;
             margin: 0;
             font-family: 'Metropolis';
@@ -53,6 +54,7 @@ function App({ Component, pageProps }) {
       </Head>
       <Component
         // passing props to use it in all components of other pages
+
         shoppingCart={shoppingCart}
         setShoppingCart={setShoppingCart}
         css={contentWrapper}
