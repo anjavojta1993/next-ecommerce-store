@@ -65,12 +65,23 @@ const buttonContainer = css`
 `;
 
 const userInputContainer = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
   font-size: 14px;
   font-weight: 900;
   border: none;
   border-radius: 5px;
   padding: 20px 30px;
   letter-spacing: 2px;
+
+  label {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: px;
+  }
 `;
 
 const buttonStyles = css`
@@ -142,7 +153,7 @@ const listStylesContainer = css`
 export default function SingleProduct(props) {
   // create useState for dropdown quantity selection user
 
-  const [userQuantitySelection, setUserQuantitySelection] = useState('1');
+  const [userQuantitySelection, setUserQuantitySelection] = useState(1);
 
   // event handler function for updating the selected quantity by user
 
@@ -181,32 +192,16 @@ export default function SingleProduct(props) {
             </ul>
           </div>
           <div css={priceContainer}>
-            {props.product.price} {props.product.currency}
+            {props.product.price / 100} {props.product.currency}
           </div>
           <div css={userInputContainer}>
             <label htmlFor="quantity">Quantity:</label>
-            <select
-              onChange={handleChangeQuantity}
+            <input
+              type="number"
+              min="1"
               value={userQuantitySelection}
-            >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-            {/* <input
-              type="dropdown"
-              id="quantity"
-              placeholder="1"
-              value={image}
-              onChange={handleChangeImage}
-            /> */}
+              onChange={handleChangeQuantity}
+            />
           </div>
           <div css={buttonContainer}>
             <button

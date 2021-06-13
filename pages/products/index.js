@@ -152,7 +152,7 @@ export default function Products(props) {
                     </div>
                     <div css={headingContainer}>{product.name}</div>
                     <div css={priceContainer}>
-                      {product.price} {product.currency}
+                      {product.price / 100} {product.currency}
                     </div>
                     <div css={buttonContainer}>
                       <button
