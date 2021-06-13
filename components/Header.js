@@ -38,7 +38,7 @@ const headerStyles = css`
   height: 50px;
   padding: 10px 15px;
 
-  a {
+  a:nth-of-type(-n + 3) {
     margin-left: 30px;
     position: relative;
     text-transform: uppercase;
@@ -93,6 +93,7 @@ export default function Header(props) {
         <Link href="/cart">
           <a>
             <img
+              href="/cart"
               css={shoppingCartStyles}
               src={cart}
               alt="shopping cart with counter"
@@ -104,7 +105,7 @@ export default function Header(props) {
         {/* show counter of product quantity in header */}
         {props.shoppingCart
           .map((p) => p.quantity)
-          .reduce((total, amount) => total + amount, 0)}
+          .reduce((total, amount) => Number(total) + Number(amount), 0)}
       </span>
     </header>
   );
