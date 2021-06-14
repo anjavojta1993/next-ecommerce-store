@@ -91,9 +91,8 @@ export default function Header(props) {
 
       <span>
         <Link href="/cart">
-          <a>
+          <a data-cy="navigate-to-cart">
             <img
-              href="/cart"
               css={shoppingCartStyles}
               src={cart}
               alt="shopping cart with counter"

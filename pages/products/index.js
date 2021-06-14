@@ -156,6 +156,7 @@ export default function Products(props) {
                     </div>
                     <div css={buttonContainer}>
                       <button
+                        data-cy="single-product-learn-more"
                         type="button"
                         onClick={() => router.push(`/products/${product.id}`)}
                       >

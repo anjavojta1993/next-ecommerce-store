@@ -190,7 +190,7 @@ export default function CheckoutPage(props) {
     if (!cardnumber || cardnumber === '') {
       newErrors.cardnumber = 'Please enter your card number!';
     } else if (cardnumber.length > 16 || cardnumber.length < 16) {
-      newErrors.fullName = 'Please enter a valid card number!';
+      newErrors.cardnumber = 'Please enter a valid card number!';
     }
 
     // state errors
@@ -242,15 +242,15 @@ export default function CheckoutPage(props) {
     // cvv error
     if (!cvv || cvv === '') {
       newErrors.cvv = 'Please enter your cvv!';
-    } else if (expYear.length > 3 || expYear.length < 3) {
+    } else if (cvv.length > 3 || cvv.length < 3) {
       newErrors.cvv = 'Please enter a valid cvv!';
     }
 
     // checkbox errors
-    if (!checkbox || checkbox === '') {
-      newErrors.checkbox =
-        'Please verify that your Billing address is the same as your shipping address';
-    }
+    //   if (!checkbox || checkbox === '') {
+    //     newErrors.checkbox =
+    //       'Please verify that your Billing address is the same as your shipping address';
+    //   }
 
     return newErrors;
   };
@@ -259,6 +259,7 @@ export default function CheckoutPage(props) {
     e.preventDefault();
     // get our new errors
     const newErrors = findFormErrors();
+    console.log(newErrors);
     // Conditional logic:
     if (Object.keys(newErrors).length > 0) {
       // We got errors!
@@ -266,6 +267,8 @@ export default function CheckoutPage(props) {
     } else {
       // No errors! Put any logic here for the form submission!
       // alert('Your payment went through!');
+      console.log("Hey I'm here!");
+      router.push('/thankyou/');
     }
   };
 
@@ -281,10 +284,11 @@ export default function CheckoutPage(props) {
         <Form>
           <div css={customerInfoDataContainer}>
             <div css={leftContainer}>
-              <h1>Billing address</h1>
+              <h1>Shipping address</h1>
               <Form.Group>
                 <Form.Label>Full Name</Form.Label>
                 <Form.Control
+                  data-cy="full-name"
                   onChange={(e) => setField('fullName', e.target.value)}
                   type="text"
                   id="fname"
@@ -298,6 +302,7 @@ export default function CheckoutPage(props) {
               <Form.Group>
                 <Form.Label>Email</Form.Label>
                 <Form.Control
+                  data-cy="email"
                   onChange={(e) => setField('email', e.target.value)}
                   type="text"
                   id="email"
@@ -312,6 +317,7 @@ export default function CheckoutPage(props) {
               <Form.Group>
                 <Form.Label>Address</Form.Label>
                 <Form.Control
+                  data-cy="address"
                   onChange={(e) => setField('address', e.target.value)}
                   type="text"
                   id="adr"
@@ -325,6 +331,7 @@ export default function CheckoutPage(props) {
               <Form.Group>
                 <Form.Label>City</Form.Label>
                 <Form.Control
+                  data-cy="city"
                   type="text"
                   id="city"
                   placeholder="New York"
@@ -339,6 +346,7 @@ export default function CheckoutPage(props) {
               <Form.Group>
                 <Form.Label>State</Form.Label>
                 <Form.Control
+                  data-cy="state"
                   type="text"
                   id="state"
                   placeholder="NY"
@@ -353,6 +361,7 @@ export default function CheckoutPage(props) {
               <Form.Group>
                 <Form.Label>Zip</Form.Label>
                 <Form.Control
+                  data-cy="zip"
                   type="text"
                   id="zip"
                   placeholder="10001"
@@ -363,7 +372,8 @@ export default function CheckoutPage(props) {
                   {errors.zip}
                 </Form.Control.Feedback>
               </Form.Group>
-              <Form.Group>
+              {/* not yet working */}
+              {/* <Form.Group>
                 <Form.Label> Shipping address same as billing</Form.Label>
 
                 <Form.Control
@@ -375,7 +385,7 @@ export default function CheckoutPage(props) {
                 <Form.Control.Feedback type="invalid" css={feedbackStyles}>
                   {errors.checkbox}
                 </Form.Control.Feedback>
-              </Form.Group>
+              </Form.Group> */}
             </div>
 
             <div css={rightContainer}>
@@ -391,6 +401,7 @@ export default function CheckoutPage(props) {
               <Form.Group>
                 <Form.Label>Name on Card</Form.Label>
                 <Form.Control
+                  data-cy="cname"
                   type="text"
                   id="cname"
                   placeholder="John More Doe"
@@ -404,6 +415,7 @@ export default function CheckoutPage(props) {
               <Form.Group>
                 <Form.Label>Credit card number</Form.Label>
                 <Form.Control
+                  data-cy="ccnum"
                   type="text"
                   id="ccnum"
                   placeholder="1111-2222-3333-4444"
@@ -417,6 +429,7 @@ export default function CheckoutPage(props) {
               <Form.Group>
                 <Form.Label>Exp Month</Form.Label>
                 <Form.Control
+                  data-cy="expmonth"
                   type="text"
                   id="expmonth"
                   placeholder="September"
@@ -431,6 +444,7 @@ export default function CheckoutPage(props) {
               <Form.Group>
                 <Form.Label>Exp Year</Form.Label>
                 <Form.Control
+                  data-cy="expyear"
                   type="text"
                   id="expyear"
                   placeholder="2018"
@@ -445,6 +459,7 @@ export default function CheckoutPage(props) {
               <Form.Group>
                 <Form.Label>CVV</Form.Label>
                 <Form.Control
+                  data-cy="cvv"
                   type="text"
                   id="cvv"
                   name="cvv"
@@ -456,7 +471,9 @@ export default function CheckoutPage(props) {
                   {errors.cvv}
                 </Form.Control.Feedback>
               </Form.Group>
+
               <button
+                data-cy="pay-button"
                 css={buttonStyles}
                 type="submit"
                 onClick={(e) => handleSubmit(e)}
@@ -465,14 +482,6 @@ export default function CheckoutPage(props) {
               </button>
             </div>
           </div>
-
-          {/* //not working */}
-          {/* <button
-            type="submit"
-            onClick={((e) => handleSubmit(e), router.push('/thankyou/'))}
-          >
-            Pay now
-          </button> */}
         </Form>
 
         {/* Start of total sum container */}

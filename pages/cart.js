@@ -380,6 +380,7 @@ export default function Cart(props) {
               <div>Total: {totalSum} €</div>
               <div css={buttonContainer}>
                 <button
+                  data-cy="checkout-button"
                   css={buttonStyles}
                   type="button"
                   onClick={() => router.push('/checkout/')}

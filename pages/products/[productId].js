@@ -205,6 +205,7 @@ export default function SingleProduct(props) {
           </div>
           <div css={buttonContainer}>
             <button
+              data-cy="single-product-add-to-cart-button"
               css={buttonStyles}
               onClick={() => {
                 props.setShoppingCart(
