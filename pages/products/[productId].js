@@ -197,6 +197,7 @@ export default function SingleProduct(props) {
           <div css={userInputContainer}>
             <label htmlFor="quantity">Quantity:</label>
             <input
+              data-cy="quantity-input-dropdown"
               type="number"
               min="1"
               value={userQuantitySelection}

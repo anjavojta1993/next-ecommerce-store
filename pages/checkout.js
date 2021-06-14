@@ -267,7 +267,6 @@ export default function CheckoutPage(props) {
     } else {
       // No errors! Put any logic here for the form submission!
       // alert('Your payment went through!');
-      console.log("Hey I'm here!");
       router.push('/thankyou/');
     }
   };

@@ -311,6 +311,7 @@ export default function Cart(props) {
                       <label htmlFor="quantity">Quantity</label>
                       <div css={inputStyles}>
                         <input
+                          data-cy="quantity-input-dropdown-cart"
                           type="number"
                           min="1"
                           value={product.quantity}
@@ -350,6 +351,7 @@ export default function Cart(props) {
 
                     <div css={deleteButtonContainer}>
                       <button
+                        data-cy="remove-button-cart"
                         css={deleteButton}
                         onClick={() => {
                           props.setShoppingCart(
