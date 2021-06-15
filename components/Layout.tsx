@@ -6,14 +6,20 @@ const containerStyles = css`
   margin: 0;
 `;
 
-export default function Layout(props) {
+type Props = {
+  shoppingCart: {
+    id: string;
+    quantity: string;
+  }[];
+
+  children: React.ReactNode;
+};
+
+export default function Layout(props: Props) {
   return (
     <>
       {/* pass props from _app.js */}
-      <Header
-        shoppingCart={props.shoppingCart}
-        setShoppingCart={props.setShoppingCart}
-      />
+      <Header shoppingCart={props.shoppingCart} />
       <div css={containerStyles}>{props.children}</div>
       <Footer />
     </>

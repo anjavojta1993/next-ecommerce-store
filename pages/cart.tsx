@@ -1,13 +1,14 @@
 import { css } from '@emotion/react';
+import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import Layout from '../components/Layout';
-import { darkBrown, darkGrey, rose } from '../pages/_app';
 import {
   removeProductByProductId,
   updateQuantityByProductId,
 } from '../util/cookies';
+import { darkBrown, darkGrey, rose } from './_app';
 
 const pageContainer = css`
   display: flex;
@@ -243,18 +244,69 @@ const deleteButton = css`
   }
 `;
 
+type Products = {
+  id: number;
+  quantity: string;
+  name: string;
+  price: string;
+  currency: string;
+  image: string;
+};
+
+type CookieArray = {
+  id: number;
+  quantity: string;
+};
+
+type Props = {
+  products: Products[];
+
+  productsInCart: {
+    id: number;
+    quantity: string;
+    name: string;
+    price: string;
+    currency: string;
+    image: string;
+  }[];
+
+  setProductsInCart: {
+    id: number;
+    quantity: string;
+    name: string;
+    price: string;
+    currency: string;
+    image: string;
+  }[];
+
+  shoppingCart: {
+    id: string;
+    quantity: string;
+  }[];
+
+  setShoppingCart: Dispatch<
+    SetStateAction<
+      {
+        id: number;
+        quantity: string;
+      }[]
+    >
+  >;
+};
+
 // STEP 0 : if no items in the cart, display "Your cart is empty"
 
 // STEP 1: display all products that are in the shopping cart (shoppingCart) + their corresponding properties from the database (products)
 
-export default function Cart(props) {
+export default function Cart(props: Props) {
+  console.log('props', props);
   const router = useRouter();
 
   const [productsInCart, setProductsInCart] = useState(props.productsInCart);
 
   const totalSum = productsInCart
     .reduce((acc, product) => {
-      return acc + Number(product.price / 100) * product.quantity;
+      return acc + (Number(product.price) / 100) * Number(product.quantity);
     }, 0)
     .toFixed(2);
 
@@ -264,10 +316,7 @@ export default function Cart(props) {
 
   if (productsInCart.length === 0) {
     return (
-      <Layout
-        shoppingCart={props.shoppingCart}
-        setShoppingCart={props.setShoppingCart}
-      >
+      <Layout shoppingCart={props.shoppingCart}>
         <section css={pageContainer}>
           You have no items in your shopping cart.
         </section>
@@ -275,10 +324,7 @@ export default function Cart(props) {
     );
   } else {
     return (
-      <Layout
-        shoppingCart={props.shoppingCart}
-        setShoppingCart={props.setShoppingCart}
-      >
+      <Layout shoppingCart={props.shoppingCart}>
         <Head>
           <title>Shopping bag</title>
         </Head>
@@ -342,9 +388,10 @@ export default function Cart(props) {
                     <div css={productSubtotalContainer}>
                       <p>Subtotal</p>
                       <div css={productCost}>
-                        {(Number(product.quantity) *
-                          Number(product.price).toFixed(2)) /
-                          100}{' '}
+                        {(
+                          Number(product.quantity) *
+                          (Number(product.price) / 100)
+                        ).toFixed(2)}{' '}
                         €
                       </div>
                     </div>
@@ -398,7 +445,7 @@ export default function Cart(props) {
   }
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { getAllProducts } = await import('../util/database');
   const products = await getAllProducts();
 
@@ -408,8 +455,9 @@ export async function getServerSideProps(context) {
 
   const cookieArray = rawCookie ? JSON.parse(rawCookie) : [];
 
-  const productsInCart = cookieArray.map((prod) => {
-    const copyProductsInCart = products.find((p) => p.id === prod.id);
+  const productsInCart = cookieArray.map((prod: CookieArray) => {
+    console.log(cookieArray);
+    const copyProductsInCart = products.find((p: Products) => p.id === prod.id);
     return {
       id: copyProductsInCart.id,
       quantity: prod.quantity,

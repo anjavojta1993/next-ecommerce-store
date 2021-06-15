@@ -1,9 +1,10 @@
 import { css } from '@emotion/react';
+import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
-import { useState } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 import Layout from '../../components/Layout';
-import { darkBrown, lightGrey, rose } from '../../pages/_app';
 import { addQuantityByProductId, parseCookieValue } from '../../util/cookies';
+import { darkBrown, lightGrey, rose } from '../_app';
 
 const pageContainer = css`
   background-color: ${lightGrey};
@@ -150,22 +151,47 @@ const listStylesContainer = css`
   }
 `;
 
-export default function SingleProduct(props) {
+type Product = {
+  id: string;
+  quantity: string;
+  name: string;
+  price: string;
+  currency: string;
+  description: string;
+  image: string;
+};
+
+type Props = {
+  product: Product;
+
+  shoppingCart: {
+    id: string;
+    quantity: string;
+  }[];
+
+  setShoppingCart: Dispatch<
+    SetStateAction<
+      {
+        id: number;
+        quantity: string;
+      }[]
+    >
+  >;
+};
+
+export default function SingleProduct(props: Props) {
   // create useState for dropdown quantity selection user
 
   const [userQuantitySelection, setUserQuantitySelection] = useState(1);
 
   // event handler function for updating the selected quantity by user
 
-  function handleChangeQuantity(event) {
-    setUserQuantitySelection(event.target.value);
+  function handleChangeQuantity(event: ChangeEvent<HTMLInputElement>) {
+    setUserQuantitySelection(parseFloat(event.target.value));
   }
   return (
     // pass props to Layout
-    <Layout
-      shoppingCart={props.shoppingCart}
-      setShoppingCart={props.setShoppingCart}
-    >
+    <Layout shoppingCart={props.shoppingCart}>
       <Head>
         <title>{props.product.name}</title>
       </Head>
@@ -192,7 +218,7 @@ export default function SingleProduct(props) {
             </ul>
           </div>
           <div css={priceContainer}>
-            {props.product.price / 100} {props.product.currency}
+            {Number(props.product.price) / 100} {props.product.currency}
           </div>
           <div css={userInputContainer}>
             <label htmlFor="quantity">Quantity:</label>
@@ -226,7 +252,7 @@ export default function SingleProduct(props) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   // The name inside the square brackets of the filename
   // is inside of the `context.query` object
   const productId = context.query.productId;

@@ -73,7 +73,14 @@ const headerStyles = css`
   }
 `;
 
-export default function Header(props) {
+type Props = {
+  shoppingCart: {
+    id: string;
+    quantity: string;
+  }[];
+};
+
+export default function Header(props: Props) {
   return (
     <header css={headerStyles}>
       <Link href="/">
