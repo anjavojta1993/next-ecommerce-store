@@ -1,9 +1,6 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
-import { lightGrey } from '../pages/_app';
-import facebook from '../public/images/facebook.png';
-import instagram from '../public/images/instagram.png';
-import twitter from '../public/images/twitter.png';
+import { lightGrey } from '../util/sharedStyles';
 
 const footerStyles = css`
   display: flex;
@@ -52,9 +49,9 @@ export default function Footer() {
         <a>Contact</a>
       </Link>
       <span css={socialMediaStyles}>
-        <img src={facebook} alt="shopping cart with counter" />
-        <img src={instagram} alt="shopping cart with counter" />
-        <img src={twitter} alt="shopping cart with counter" />
+        <img src="/images/facebook.png" alt="shopping cart with counter" />
+        <img src="/images/instagram.png" alt="shopping cart with counter" />
+        <img src="/images/twitter.png" alt="shopping cart with counter" />
       </span>
     </footer>
   );
