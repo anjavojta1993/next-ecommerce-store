@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
-import { darkBrown, lightRose, rose } from '../../pages/_app';
+import { darkBrown, lightRose, rose } from '../../util/sharedStyles';
 
 const pageContainer = css`
   display: flex;
