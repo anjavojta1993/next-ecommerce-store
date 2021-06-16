@@ -23,9 +23,9 @@ describe('update quantity', () => {
     // check if quantity selection is visible
     cy.get('[data-cy="quantity-input-dropdown-cart"]').should('be.visible');
     // delete quantity
-    cy.get('[data-cy="quantity-input-dropdown"]').clear();
+    cy.get('[data-cy="quantity-input-dropdown-cart"]').clear();
     // type quantity of 2
-    cy.get('[data-cy="quantity-input-dropdown"]').type('2');
+    cy.get('[data-cy="quantity-input-dropdown-cart"]').type('2');
     // check if remove button is visible
     cy.get('[data-cy="remove-button-cart"]').should('be.visible');
     // click on remove button
