@@ -1,16 +1,17 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Layout from '../components/Layout';
-import { darkBrown, lightRose, rose } from '../pages/_app';
+import { darkBrown, lightRose, rose } from '../util/sharedStyles';
 
 const pageContainer = css`
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  /* height: 100vh; */
   width: 100vw;
   align-items: center;
-  margin-top: 25px;
-  margin: 0 auto;
+  //background-color: yellow;
+  margin-top: 40px;
+  //margin-top: 25px;
 `;
 
 const heroContainer = css`
@@ -20,7 +21,7 @@ const heroContainer = css`
   align-items: center;
   justify-content: center;
   display: flex;
-  margin-bottom: 50px;
+  //margin-bottom: 10px;
   z-index: 2;
 
   ::before {
@@ -58,8 +59,8 @@ const leftContainer = css`
   width: 500px;
   align-items: center;
   justify-content: center;
-  margin-left: 10%;
-  background-color: red;
+  margin-left: 15%;
+  //background-color: red;
 
   p {
     font-size: 20px;
@@ -77,7 +78,7 @@ const rightContainer = css`
   align-items: center;
   justify-content: center;
   //margin-left: 10%;
-  background-color: blue;
+  //background-color: blue;
 
   p {
     font-size: 20px;
@@ -89,11 +90,9 @@ const rightContainer = css`
 
 const imageContainer = css`
   img {
-    height: 400px;
+    height: 350px;
     border-radius: 5px;
     margin-bottom: 10px;
-    width: 230px;
-    height: 300px;
     object-fit: cover;
     box-shadow: 0 7px 17px rgb(0 0 0 / 13%);
   }
@@ -117,7 +116,7 @@ export default function About(props) {
 
         <div css={leftContainer}>
           <div css={imageContainer}>
-            <img src="images/save_the_planet_2.jpg" alt="young herb plant" />
+            <img src="images/save_the_planet_1.jpg" alt="young herb plant" />
           </div>
         </div>
 
@@ -131,6 +130,25 @@ export default function About(props) {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum."
           </p>
+        </div>
+      </section>
+      <section css={pageContainer}>
+        <div css={leftContainer}>
+          <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum."
+          </p>
+        </div>
+
+        <div css={rightContainer}>
+          <div css={imageContainer}>
+            <img src="images/save_the_planet_2.jpg" alt="young herb plant" />
+          </div>
         </div>
       </section>
     </Layout>

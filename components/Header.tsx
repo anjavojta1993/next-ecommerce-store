@@ -43,7 +43,7 @@ const headerStyles = css`
     letter-spacing: 1px;
     text-decoration: none;
     color: black;
-    font-weight: bold;
+    //font-weight: bold;
     //overflow: hidden;
 
     :first-of-type {
