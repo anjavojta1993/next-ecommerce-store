@@ -8,7 +8,7 @@ import {
   removeProductByProductId,
   updateQuantityByProductId,
 } from '../util/cookies';
-import { darkBrown, darkGrey, rose } from './_app';
+import { darkBrown, darkGrey, rose } from '../util/sharedStyles';
 
 const pageContainer = css`
   display: flex;
