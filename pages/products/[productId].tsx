@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 import Layout from '../../components/Layout';
 import { addQuantityByProductId, parseCookieValue } from '../../util/cookies';
-import { darkBrown, lightGrey, rose } from '../_app';
+import { darkBrown, lightGrey, rose } from '../../util/sharedStyles';
 
 const pageContainer = css`
   background-color: ${lightGrey};
