@@ -5,7 +5,7 @@ import { darkBrown, lightRose, rose } from '../pages/_app';
 
 const pageContainer = css`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: 100vh;
   width: 100vw;
   align-items: center;
@@ -51,6 +51,54 @@ const heroHeading = css`
   font-weight: 900;
 `;
 
+const leftContainer = css`
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 500px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10%;
+  background-color: red;
+
+  p {
+    font-size: 20px;
+    padding: 20px;
+    line-height: 1.5em;
+    text-align: center;
+  }
+`;
+
+const rightContainer = css`
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 500px;
+  align-items: center;
+  justify-content: center;
+  //margin-left: 10%;
+  background-color: blue;
+
+  p {
+    font-size: 20px;
+    padding: 50px;
+    line-height: 1.5em;
+    text-align: center;
+  }
+`;
+
+const imageContainer = css`
+  img {
+    height: 400px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 230px;
+    height: 300px;
+    object-fit: cover;
+    box-shadow: 0 7px 17px rgb(0 0 0 / 13%);
+  }
+`;
+
 export default function About(props) {
   return (
     <Layout
@@ -64,7 +112,27 @@ export default function About(props) {
         <div css={heroHeading}>Our mission</div>
       </div>
 
-      <section css={pageContainer}>{/* Start of products container */}</section>
+      <section css={pageContainer}>
+        {/* Start of products container */}
+
+        <div css={leftContainer}>
+          <div css={imageContainer}>
+            <img src="images/save_the_planet_2.jpg" alt="young herb plant" />
+          </div>
+        </div>
+
+        <div css={rightContainer}>
+          <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum."
+          </p>
+        </div>
+      </section>
     </Layout>
   );
 }
