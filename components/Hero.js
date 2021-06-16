@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
-import { darkBrown, rose } from '../pages/_app';
+import { darkBrown, rose } from '../util/sharedStyles';
 
 const heroStyles = css`
   position: relative;
