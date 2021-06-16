@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Layout from '../components/Layout';
-import { darkBrown, darkGrey, rose } from '../pages/_app';
+import { darkBrown, rose } from '../util/sharedStyles';
 
 const pageContainer = css`
   display: flex;
