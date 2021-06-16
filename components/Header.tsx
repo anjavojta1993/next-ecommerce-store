@@ -1,8 +1,6 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
-import { darkBrown, rose } from '../pages/_app';
-import logo from '../public/images/logo-green.svg';
-import cart from '../public/images/shopping-cart.png';
+import { darkBrown, rose } from '../util/sharedStyles';
 
 const logoStyles = css`
   margin-left: 220px;
@@ -93,7 +91,11 @@ export default function Header(props: Props) {
         <a>About</a>
       </Link>
       <span>
-        <img css={logoStyles} src={logo} alt="logo with leaf" />
+        <img
+          css={logoStyles}
+          src="images/logo-green.svg"
+          alt="logo with leaf"
+        />
       </span>
 
       <span>
@@ -101,7 +103,7 @@ export default function Header(props: Props) {
           <a data-cy="navigate-to-cart">
             <img
               css={shoppingCartStyles}
-              src={cart}
+              src="images/shopping-cart.png"
               alt="shopping cart with counter"
             />
           </a>
