@@ -6,7 +6,7 @@ const pageContainer = css`
   display: flex;
   flex-direction: row;
   /* height: 100vh; */
-  width: 100vw;
+  width: 100%;
   align-items: center;
   //background-color: yellow;
   margin-top: 40px;
