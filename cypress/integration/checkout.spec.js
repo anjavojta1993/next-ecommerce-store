@@ -3,15 +3,21 @@ describe('Checkout flow from start to end', () => {
     // go to product page
     cy.visit('localhost:3000/products/');
     // check if learn more buttons are visible
-    cy.get('[data-cy="single-product-learn-more"]').should('be.visible');
+    cy.get('[data-cy="single-product-learn-more"]')
+      .should('be.visible')
+      .contains('Learn more');
     // click on "Learn more" and go to product
     cy.get('[data-cy="single-product-learn-more"]').first().click();
     // check if add to cart button is visible
     cy.get('[data-cy="single-product-add-to-cart-button"]', {
-      timeout: 8000,
-    }).should('be.visible');
+      timeout: 10000,
+    })
+      .should('be.visible')
+      .contains('Add to cart');
     // click on Add to cart button
-    cy.get('[data-cy="single-product-add-to-cart-button"]').click();
+    cy.get('[data-cy="single-product-add-to-cart-button"]')
+      .contains('Add to cart')
+      .click();
     // click on shopping bag icon in header
     cy.get('[data-cy="navigate-to-cart"]').click();
     // check if checkout button is visible
