@@ -1,34 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Setup Guide
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. clone the project on your local machine (git clone <url>)
+2. type yarn into your terminal
+3. set up the new database (commands in the readme)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Copy the .env.example file to a new file called .env (ignored from Git) and fill in the necessary information.
 
-## Deploy on Vercel
+Follow the instructions from the PostgreSQL step in UpLeveled's System Setup Instructions.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Then, connect to the built-in postgres database as administrator in order to create the database:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Windows
+
+If it asks for a password, use postgres.
+
+psql -U postgres
+macOS
+
+psql postgres
+Once you have connected, run the following to create the database:
+
+CREATE DATABASE <database name>;
+CREATE USER <user name> WITH ENCRYPTED PASSWORD '<user password>';
+GRANT ALL PRIVILEGES ON DATABASE <database name> TO <user name>;
+Then, to connect to the database using this new user, quit psql and reconnect:
+
+\q
+psql -U <user name> <database name>
+Running the migrations
+To set up the structure and the content of the database, run the migrations using Ley:
+
+yarn migrate up
+To reverse the last single migration, run:
+
+yarn migrate down 4. copy the env file (described in the readme)

@@ -1,11 +1,12 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import { css } from '@emotion/react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { darkBrown, lightRose } from '../pages/_app';
+import { darkBrown, rose } from '../util/sharedStyles';
 
 const heroStyles = css`
   position: relative;
-  height: 90vh;
+  height: 100vh;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -36,9 +37,9 @@ const heroHeadingContainer = css`
   height: 350px;
 
   h1 {
-    font-size: 50px;
+    font-size: 48px;
     line-height: 1.1em;
-    font-family: 'Cedarville Cursive', cursive;
+    font-family: 'Cedarville Cursive';
   }
 
   h2 {
@@ -49,11 +50,11 @@ const heroHeadingContainer = css`
 
   button {
     color: white;
-    background-color: ${lightRose};
-    font-size: 14px;
-    font-weight: 900;
+    background-color: ${rose};
+    font-size: 16px;
+    font-weight: 300;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 20px 30px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -70,25 +71,13 @@ export default function Hero() {
   const router = useRouter();
   return (
     <>
-      <head>
+      <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap"
           rel="stylesheet"
         />
-
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap"
-          rel="stylesheet"
-        />
-
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Dawning+of+a+New+Day&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+      </Head>
       <div css={heroStyles}>
         <div css={heroHeadingContainer}>
           <h1>
