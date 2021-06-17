@@ -2,43 +2,54 @@
 
 HerbMeHome - Next.JS e-commerce store
 
+![alt text](/public/images/home.jpg?raw=true 'HerbMeHome Store')
+![alt text](/public/images/thankyou2.jpg?raw=true 'HerbMeHome Store')
+
 ## Description
 
-HerbMeHome is an e-commerce store project built during the upLeveled web development bootcamp.
+HerbMeHome is an e-commerce store project built during the upLeveled web development bootcamp. It uses various technologies (see technologies used) to simulate a real shopping experience from browsing the products until checking out and successfully submitting an order.
+
+## Technologies used
+
+- Next.js
+- React.js
+- Typescript
+- PostgreSQL
+- Emotion
+- Bootstrap
+- Cypress
+- Jest
 
 ## Setup Guide
 
-1. clone the project on your local machine (git clone <url>)
-2. type yarn into your terminal
-3. set up the new database (commands in the readme)
+1. Clone the project on your local machine (git clone <url>)
+2. Type yarn into your terminal
+3. Set up a database:
 
-Copy the .env.example file to a new file called .env (ignored from Git) and fill in the necessary information.
+- CREATE DATABASE `<database name>`
+- CREATE USER `<user name>` WITH ENCRYPTED PASSWORD `<user password>`
+- GRANT ALL PRIVILEGES ON DATABASE `<database name>` TO `<user name>`
 
-Follow the instructions from the PostgreSQL step in UpLeveled's System Setup Instructions.
+4. Quit psql and connect to the database
 
-Then, connect to the built-in postgres database as administrator in order to create the database:
+- `\q`
+- psql -U `<user name>` `<database name>`
 
-Windows
+5. Run the migrations using ley
 
-If it asks for a password, use postgres.
+- yarn migrate up
+- yarn migrate down (To reverse the last single migration)
 
-psql -U postgres
-macOS
+6. Copy the .env.example file to a new file called .env (ignored from Git) and fill in the necessary information.
 
-psql postgres
-Once you have connected, run the following to create the database:
+## Deployment Guide
 
-CREATE DATABASE <database name>;
-CREATE USER <user name> WITH ENCRYPTED PASSWORD '<user password>';
-GRANT ALL PRIVILEGES ON DATABASE <database name> TO <user name>;
-Then, to connect to the database using this new user, quit psql and reconnect:
-
-\q
-psql -U <user name> <database name>
-Running the migrations
-To set up the structure and the content of the database, run the migrations using Ley:
-
-yarn migrate up
-To reverse the last single migration, run:
-
-yarn migrate down 4. copy the env file (described in the readme)
+1. Sign up for Heroku: https://signup.heroku.com/
+2. Create a new App
+3. Choose a name and select the "Europe" Region
+4. Click on the button in the middle called "Connect to GitHub"
+5. Search for your repository in the search box at the bottom of the page and click on the "Connect" button
+6. Click on the button for "Enable Automatic Deploys"
+7. Go back to the Overview tab and click on "Configure Add-On"
+8. Search for "Postgres" and select "Heroku Postgres" from the results
+9. Deploy your app
