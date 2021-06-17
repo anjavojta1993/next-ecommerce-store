@@ -151,6 +151,15 @@ const listStylesContainer = css`
   }
 `;
 
+const inputStyles = css`
+  display: flex;
+  font-family: 'Metropolis';
+  text-align: center;
+  width: 50px;
+  margin-top: 20px;
+  padding: 5px;
+`;
+
 type Product = {
   id: string;
   quantity: string;
@@ -223,6 +232,7 @@ export default function SingleProduct(props: Props) {
           <div css={userInputContainer}>
             <label htmlFor="quantity">Quantity:</label>
             <input
+              css={inputStyles}
               data-cy="quantity-input-dropdown"
               type="number"
               min="1"
