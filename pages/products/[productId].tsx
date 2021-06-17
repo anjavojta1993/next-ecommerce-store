@@ -1,19 +1,34 @@
 import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 import Layout from '../../components/Layout';
 import { addQuantityByProductId, parseCookieValue } from '../../util/cookies';
-import { darkBrown, lightGrey, rose } from '../../util/sharedStyles';
+import { darkBrown, darkGrey, lightGrey, rose } from '../../util/sharedStyles';
 
 const pageContainer = css`
   background-color: ${lightGrey};
   display: flex;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   align-items: center;
   margin-top: 25px;
   margin: 0 auto;
+`;
+
+const backToProductsStyles = css`
+  display: flex;
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 50px;
+  text-transform: uppercase;
+  color: black;
+
+  :hover {
+    cursor: pointer;
+    color: ${darkGrey};
+  }
 `;
 
 const leftContainer = css`
@@ -46,10 +61,20 @@ const imageContainer = css`
 
 const rightContainer = css`
   display: flex;
+  flex-direction: column;
+  width: 300px;
+  align-items: center;
+  justify-content: center;
+  height: 700px;
+  margin-left: 100px;
+  //background-color: green;
+`;
+
+const deliveryDetailsContainer = css`
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 300px;
-  margin-left: 100px;
   height: 500px;
   border: solid 2px gray;
   border-radius: 8px;
@@ -219,43 +244,48 @@ export default function SingleProduct(props: Props) {
         </div>
 
         <div css={rightContainer}>
-          <div>
-            <ul css={listStylesContainer}>
-              <li>&#10003; &nbsp; Fresh from your local gardener</li>
-              <li>&#10003; &nbsp; Free delivery</li>
-              <li>&#10003; &nbsp; 2 - 5 working days delivery </li>
-            </ul>
+          <div css={deliveryDetailsContainer}>
+            <div>
+              <ul css={listStylesContainer}>
+                <li>&#10003; &nbsp; Fresh from your local gardener</li>
+                <li>&#10003; &nbsp; Free delivery</li>
+                <li>&#10003; &nbsp; 2 - 5 working days delivery </li>
+              </ul>
+            </div>
+            <div css={priceContainer}>
+              {Number(props.product.price) / 100} {props.product.currency}
+            </div>
+            <div css={userInputContainer}>
+              <label htmlFor="quantity">Quantity:</label>
+              <input
+                css={inputStyles}
+                data-cy="quantity-input-dropdown"
+                type="number"
+                min="1"
+                value={userQuantitySelection}
+                onChange={handleChangeQuantity}
+              />
+            </div>
+            <div css={buttonContainer}>
+              <button
+                data-cy="single-product-add-to-cart-button"
+                css={buttonStyles}
+                onClick={() => {
+                  props.setShoppingCart(
+                    addQuantityByProductId(
+                      props.product.id,
+                      Number(userQuantitySelection),
+                    ),
+                  );
+                }}
+              >
+                Add to cart
+              </button>
+            </div>
           </div>
-          <div css={priceContainer}>
-            {Number(props.product.price) / 100} {props.product.currency}
-          </div>
-          <div css={userInputContainer}>
-            <label htmlFor="quantity">Quantity:</label>
-            <input
-              css={inputStyles}
-              data-cy="quantity-input-dropdown"
-              type="number"
-              min="1"
-              value={userQuantitySelection}
-              onChange={handleChangeQuantity}
-            />
-          </div>
-          <div css={buttonContainer}>
-            <button
-              data-cy="single-product-add-to-cart-button"
-              css={buttonStyles}
-              onClick={() => {
-                props.setShoppingCart(
-                  addQuantityByProductId(
-                    props.product.id,
-                    Number(userQuantitySelection),
-                  ),
-                );
-              }}
-            >
-              Add to cart
-            </button>
-          </div>
+          <Link href="/products">
+            <a css={backToProductsStyles}>≪ &nbsp; Back to products</a>
+          </Link>
         </div>
       </div>
     </Layout>
