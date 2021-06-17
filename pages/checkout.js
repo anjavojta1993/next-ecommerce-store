@@ -95,20 +95,20 @@ const totalSumCalculation = css`
   flex-direction: column;
   display: flex;
 
-  div {
+  /* div {
     display: flex;
     margin-bottom: 20px;
     justify-content: space-between;
   }
 
-  div:nth-child(2) {
+  .shipping-fee {
     border-bottom: 1px solid black;
   }
 
-  div:nth-child(3) {
+  .total-sum {
     font-weight: 900;
     font-size: 20px;
-  }
+  } */
 `;
 
 const leftContainer = css`
