@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import { css } from '@emotion/react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { darkBrown, rose } from '../util/sharedStyles';
 
@@ -70,25 +71,13 @@ export default function Hero() {
   const router = useRouter();
   return (
     <>
-      <head>
+      <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap"
           rel="stylesheet"
         />
-
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap"
-          rel="stylesheet"
-        />
-
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Dawning+of+a+New+Day&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+      </Head>
       <div css={heroStyles}>
         <div css={heroHeadingContainer}>
           <h1>
