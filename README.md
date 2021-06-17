@@ -1,6 +1,10 @@
-## Getting Started
+## Title
 
-## Learn More
+HerbMeHome - Next.JS e-commerce store
+
+## Description
+
+HerbMeHome is an e-commerce store project built during the upLeveled web development bootcamp.
 
 ## Setup Guide
 
