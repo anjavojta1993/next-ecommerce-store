@@ -1,6 +1,0 @@
-;FFMETADATA1
-[CHAPTER]
-TIMEBASE=1/1000
-START=-53751
-END=6193
-title=Checkout flow from start to end can add products, go to checkout and is forwarded to the thank you page

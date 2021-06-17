@@ -3,13 +3,17 @@ describe('update quantity', () => {
     // go to product page
     cy.visit('localhost:3000/products/');
     // check if learn more buttons are visible
-    cy.get('[data-cy="single-product-learn-more"]').should('be.visible');
+    cy.get('[data-cy="single-product-learn-more"]')
+      .should('be.visible')
+      .should('contain', 'learn more');
     // click on "Learn more" and go to product
     cy.get('[data-cy="single-product-learn-more"]').first().click();
     // check if quantity selection is visible
     cy.get('[data-cy="quantity-input-dropdown"]', {
       timeout: 8000,
-    }).should('be.visible');
+    })
+      .should('be.visible')
+      .should('contain', 'quantity');
     // delete quantity
     cy.get('[data-cy="quantity-input-dropdown"]').clear();
     // type quantity of 5
@@ -19,7 +23,9 @@ describe('update quantity', () => {
       'be.visible',
     );
     // click on Add to cart button
-    cy.get('[data-cy="single-product-add-to-cart-button"]').click();
+    cy.get('[data-cy="single-product-add-to-cart-button"]')
+      .contains('Add to cart')
+      .click();
     // click on shopping bag icon in header and navigate to checkout page
     cy.get('[data-cy="navigate-to-cart"]').click();
     // check if quantity selection is visible
