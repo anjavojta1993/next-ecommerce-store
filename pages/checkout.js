@@ -43,6 +43,7 @@ const rightContainer = css`
   height: 95%;
 
   h1 {
+    margin-top: 20px;
     margin-bottom: 20px;
   }
 
@@ -124,6 +125,7 @@ const leftContainer = css`
 
   h1 {
     margin-bottom: 20px;
+    margin-top: 20px;
   }
 `;
 
@@ -132,7 +134,7 @@ const iconContainer = css`
     width: 50px;
     margin-right: 5px;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 `;
 
@@ -247,19 +249,19 @@ export default function CheckoutPage(props) {
 
     // expiration month error
     if (!expMonth || expMonth === '') {
-      newErrors.expMonth = 'Please enter an expiration month';
+      newErrors.expMonth = 'Please enter an expiration month!';
     }
 
     // cardname error
     if (!cardname || cardname === '') {
-      newErrors.cardname = 'Please enter your card name';
+      newErrors.cardname = 'Please enter your card name!';
     }
 
     // expiration year error
     if (!expYear || expYear === '') {
-      newErrors.country = 'Please enter an expiration year';
+      newErrors.expYear = 'Please enter an expiration year!';
     } else if (expYear.length > 4 || expYear.length < 4) {
-      newErrors.address = 'Please enter a valid expiration year!';
+      newErrors.expYear = 'Please enter a valid expiration year!';
     }
 
     // cvv error
