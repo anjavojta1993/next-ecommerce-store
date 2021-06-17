@@ -9,14 +9,14 @@ import { darkBrown, rose } from '../util/sharedStyles';
 
 const pageContainer = css`
   display: flex;
-  align-items: center;
-  /* width: 100vw;
-  height: 100vh; */
-  justify-content: center;
-  margin-top: 25px;
+  /* height: 100vh; */
+  height: 100%;
   padding-top: 50px;
   padding-bottom: 50px;
-  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  /* margin-top: 25px;
+  margin: 0 auto; */
 `;
 
 const customerInfoDataContainer = css`
@@ -26,7 +26,7 @@ const customerInfoDataContainer = css`
   margin-left: 20px;
   margin-right: 20px;
   background-color: red;
-  height: 90vh;
+  height: 95%;
   border: solid 2px gray;
   border-radius: 8px;
 `;
@@ -40,7 +40,7 @@ const rightContainer = css`
   margin-right: 20px;
   background-color: orange;
   flex-direction: column;
-  height: 70vh;
+  height: 95%;
 
   h1 {
     margin-bottom: 20px;
@@ -54,6 +54,8 @@ const rightContainer = css`
 
 const totalSumContainer = css`
   //align-items: center;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   display: flex;
   align-self: flex-start;
@@ -65,8 +67,26 @@ const totalSumContainer = css`
   padding-left: 20px;
 
   h1 {
+    display: flex;
     font-size: 28px;
-    margin-top: 10px;
+    font-weight: 900;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  div {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+  }
+
+  .shipping-fee {
+    border-bottom: 1px solid black;
+  }
+
+  .total-sum {
+    font-weight: 900;
+    font-size: 20px;
   }
 `;
 
@@ -100,7 +120,7 @@ const leftContainer = css`
   margin-right: 20px;
   background-color: green;
   flex-direction: column;
-  height: 70vh;
+  height: 95%;
 
   h1 {
     margin-bottom: 20px;
@@ -135,7 +155,10 @@ const buttonStyles = css`
   }
 `;
 
-const feedbackStyles = css``;
+const inputStyles = css`
+  margin-bottom: 5px;
+  margin-top: 5px;
+`;
 
 export default function CheckoutPage(props) {
   const router = useRouter();
@@ -176,7 +199,6 @@ export default function CheckoutPage(props) {
       expMonth,
       expYear,
       cvv,
-      checkbox,
     } = form;
     const newErrors = {};
     // name errors
@@ -246,12 +268,6 @@ export default function CheckoutPage(props) {
       newErrors.cvv = 'Please enter a valid cvv!';
     }
 
-    // checkbox errors
-    //   if (!checkbox || checkbox === '') {
-    //     newErrors.checkbox =
-    //       'Please verify that your Billing address is the same as your shipping address';
-    //   }
-
     return newErrors;
   };
 
@@ -285,7 +301,7 @@ export default function CheckoutPage(props) {
             <div css={leftContainer}>
               <h1>Shipping address</h1>
               <Form.Group>
-                <Form.Label>Full Name</Form.Label>
+                <Form.Label css={inputStyles}>Full Name</Form.Label>
                 <Form.Control
                   data-cy="full-name"
                   onChange={(e) => setField('fullName', e.target.value)}
@@ -294,12 +310,12 @@ export default function CheckoutPage(props) {
                   placeholder="John M. Doe"
                   isInvalid={!!errors.fullName}
                 />
-                <Form.Control.Feedback type="invalid" css={feedbackStyles}>
+                <Form.Control.Feedback type="invalid">
                   {errors.fullName}
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
-                <Form.Label>Email</Form.Label>
+                <Form.Label css={inputStyles}>Email</Form.Label>
                 <Form.Control
                   data-cy="email"
                   onChange={(e) => setField('email', e.target.value)}
@@ -308,13 +324,13 @@ export default function CheckoutPage(props) {
                   placeholder="john@example.com"
                   isInvalid={!!errors.email}
                 />
-                <Form.Control.Feedback type="invalid" css={feedbackStyles}>
+                <Form.Control.Feedback type="invalid">
                   {errors.email}
                 </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group>
-                <Form.Label>Address</Form.Label>
+                <Form.Label css={inputStyles}>Address</Form.Label>
                 <Form.Control
                   data-cy="address"
                   onChange={(e) => setField('address', e.target.value)}
@@ -323,12 +339,12 @@ export default function CheckoutPage(props) {
                   placeholder="542 W. 15th Street"
                   isInvalid={!!errors.address}
                 />
-                <Form.Control.Feedback type="invalid" css={feedbackStyles}>
+                <Form.Control.Feedback type="invalid">
                   {errors.address}
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
-                <Form.Label>City</Form.Label>
+                <Form.Label css={inputStyles}>City</Form.Label>
                 <Form.Control
                   data-cy="city"
                   type="text"
@@ -337,13 +353,13 @@ export default function CheckoutPage(props) {
                   onChange={(e) => setField('city', e.target.value)}
                   isInvalid={!!errors.city}
                 />
-                <Form.Control.Feedback type="invalid" css={feedbackStyles}>
+                <Form.Control.Feedback type="invalid">
                   {errors.city}
                 </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group>
-                <Form.Label>State</Form.Label>
+                <Form.Label css={inputStyles}>State</Form.Label>
                 <Form.Control
                   data-cy="state"
                   type="text"
@@ -352,13 +368,13 @@ export default function CheckoutPage(props) {
                   onChange={(e) => setField('state', e.target.value)}
                   isInvalid={!!errors.state}
                 />
-                <Form.Control.Feedback type="invalid" css={feedbackStyles}>
+                <Form.Control.Feedback type="invalid">
                   {errors.state}
                 </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group>
-                <Form.Label>Zip</Form.Label>
+                <Form.Label css={inputStyles}>Zip</Form.Label>
                 <Form.Control
                   data-cy="zip"
                   type="text"
@@ -367,24 +383,10 @@ export default function CheckoutPage(props) {
                   onChange={(e) => setField('zip', e.target.value)}
                   isInvalid={!!errors.zip}
                 />
-                <Form.Control.Feedback type="invalid" css={feedbackStyles}>
+                <Form.Control.Feedback type="invalid">
                   {errors.zip}
                 </Form.Control.Feedback>
               </Form.Group>
-              {/* not yet working */}
-              {/* <Form.Group>
-                <Form.Label> Shipping address same as billing</Form.Label>
-
-                <Form.Control
-                  as="checkbox"
-                  onChange={(e) => setField('checkbox', e.target.value)}
-                  isInvalid={!!errors.checkbox}
-                />
-
-                <Form.Control.Feedback type="invalid" css={feedbackStyles}>
-                  {errors.checkbox}
-                </Form.Control.Feedback>
-              </Form.Group> */}
             </div>
 
             <div css={rightContainer}>
@@ -398,7 +400,7 @@ export default function CheckoutPage(props) {
               </div>
 
               <Form.Group>
-                <Form.Label>Name on Card</Form.Label>
+                <Form.Label css={inputStyles}>Name on Card</Form.Label>
                 <Form.Control
                   data-cy="cname"
                   type="text"
@@ -407,12 +409,12 @@ export default function CheckoutPage(props) {
                   onChange={(e) => setField('cardname', e.target.value)}
                   isInvalid={!!errors.cardname}
                 />
-                <Form.Control.Feedback type="invalid" css={feedbackStyles}>
+                <Form.Control.Feedback type="invalid">
                   {errors.cardname}
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
-                <Form.Label>Credit card number</Form.Label>
+                <Form.Label css={inputStyles}>Credit card number</Form.Label>
                 <Form.Control
                   data-cy="ccnum"
                   type="text"
@@ -421,12 +423,12 @@ export default function CheckoutPage(props) {
                   onChange={(e) => setField('cardnumber', e.target.value)}
                   isInvalid={!!errors.cardnumber}
                 />
-                <Form.Control.Feedback type="invalid" css={feedbackStyles}>
+                <Form.Control.Feedback type="invalid">
                   {errors.cardnumber}
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
-                <Form.Label>Exp Month</Form.Label>
+                <Form.Label css={inputStyles}>Exp Month</Form.Label>
                 <Form.Control
                   data-cy="expmonth"
                   type="text"
@@ -435,13 +437,13 @@ export default function CheckoutPage(props) {
                   onChange={(e) => setField('expMonth', e.target.value)}
                   isInvalid={!!errors.expMonth}
                 />
-                <Form.Control.Feedback type="invalid" css={feedbackStyles}>
+                <Form.Control.Feedback type="invalid">
                   {errors.expMonth}
                 </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group>
-                <Form.Label>Exp Year</Form.Label>
+                <Form.Label css={inputStyles}>Exp Year</Form.Label>
                 <Form.Control
                   data-cy="expyear"
                   type="text"
@@ -450,13 +452,13 @@ export default function CheckoutPage(props) {
                   onChange={(e) => setField('expYear', e.target.value)}
                   isInvalid={!!errors.expYear}
                 />
-                <Form.Control.Feedback type="invalid" css={feedbackStyles}>
+                <Form.Control.Feedback type="invalid">
                   {errors.expYear}
                 </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group>
-                <Form.Label>CVV</Form.Label>
+                <Form.Label css={inputStyles}>CVV</Form.Label>
                 <Form.Control
                   data-cy="cvv"
                   type="text"
@@ -466,7 +468,7 @@ export default function CheckoutPage(props) {
                   onChange={(e) => setField('cvv', e.target.value)}
                   isInvalid={!!errors.cvv}
                 />
-                <Form.Control.Feedback type="invalid" css={feedbackStyles}>
+                <Form.Control.Feedback type="invalid">
                   {errors.cvv}
                 </Form.Control.Feedback>
               </Form.Group>
@@ -489,8 +491,8 @@ export default function CheckoutPage(props) {
 
           <div css={totalSumCalculation}>
             <div>Subtotal:{totalSum} €</div>
-            <div>Shipping fee: 0.00 €</div>
-            <div>Total: {totalSum} €</div>
+            <div className="shipping-fee">Shipping fee: 0.00 €</div>
+            <div className="total-sum">Total: {totalSum} €</div>
           </div>
         </div>
       </section>
