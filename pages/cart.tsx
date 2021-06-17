@@ -192,6 +192,10 @@ const productSubtotalContainer = css`
     /* margin-bottom: 20px; */
   }
 
+  div {
+    margin-bottom: 30px;
+  }
+
   /* .product-cost {
     display: flex;
     align-items: center;
