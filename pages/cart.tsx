@@ -85,11 +85,11 @@ const totalSumContainer = css`
     justify-content: space-between;
   }
 
-  div:nth-child(2) {
+  .shipping-fee {
     border-bottom: 1px solid black;
   }
 
-  div:nth-child(3) {
+  .total-sum {
     font-weight: 900;
     font-size: 20px;
   }
@@ -155,7 +155,7 @@ const productQuantityContainer = css`
   flex-direction: column;
   width: 250px;
   height: 190px;
-  //background-color: green;
+  background-color: red;
   margin-right: 20px;
   align-items: center;
   justify-content: center;
@@ -163,8 +163,17 @@ const productQuantityContainer = css`
   label {
     font-size: 20px;
     text-align: center;
-    margin-bottom: 20px;
+    //margin-bottom: 20px;
   }
+`;
+
+const inputStyles = css`
+  display: flex;
+  font-family: 'Metropolis';
+  text-align: center;
+  width: 50px;
+  margin-top: 20px;
+  padding: 5px;
 `;
 
 const productSubtotalContainer = css`
@@ -172,7 +181,7 @@ const productSubtotalContainer = css`
   flex-direction: column;
   width: 250px;
   height: 190px;
-  //background-color: green;
+  background-color: green;
   margin-right: 20px;
   align-items: center;
   justify-content: center;
@@ -180,23 +189,24 @@ const productSubtotalContainer = css`
   p {
     font-size: 20px;
     text-align: center;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
   }
+
+  /* .product-cost {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  } */
 `;
 
-const productCost = css`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const inputStyles = css`
-  display: flex;
-  justify-content: center;
-  //color: red;
-  //background-color: red;
-  align-items: center;
-`;
+// const productCost = css`
+//   display: flex;
+//   justify-content: center;
+//   color: red;
+//   background-color: red;
+//   align-items: center;
+// `;
 
 const buttonContainer = css`
   display: flex;
@@ -355,8 +365,9 @@ export default function Cart(props: Props) {
                     {/* Container for quantity & heading */}
                     <div css={productQuantityContainer}>
                       <label htmlFor="quantity">Quantity</label>
-                      <div css={inputStyles}>
+                      <div>
                         <input
+                          css={inputStyles}
                           data-cy="quantity-input-dropdown-cart"
                           type="number"
                           min="1"
@@ -387,7 +398,7 @@ export default function Cart(props: Props) {
                     {/* Container for subtotal */}
                     <div css={productSubtotalContainer}>
                       <p>Subtotal</p>
-                      <div css={productCost}>
+                      <div>
                         {(
                           Number(product.quantity) *
                           (Number(product.price) / 100)
@@ -425,8 +436,8 @@ export default function Cart(props: Props) {
 
             <div css={totalSumContainer}>
               <div>Subtotal:{totalSum} €</div>
-              <div>Shipping fee: 0.00 €</div>
-              <div>Total: {totalSum} €</div>
+              <div className="shipping-fee">Shipping fee: 0.00 €</div>
+              <div className="total-sum">Total: {totalSum} €</div>
               <div css={buttonContainer}>
                 <button
                   data-cy="checkout-button"
