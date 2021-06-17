@@ -7,7 +7,9 @@ describe('update quantity', () => {
     // click on "Learn more" and go to product
     cy.get('[data-cy="single-product-learn-more"]').first().click();
     // check if quantity selection is visible
-    cy.get('[data-cy="quantity-input-dropdown"]').should('be.visible');
+    cy.get('[data-cy="quantity-input-dropdown"]', {
+      timeout: 8000,
+    }).should('be.visible');
     // delete quantity
     cy.get('[data-cy="quantity-input-dropdown"]').clear();
     // type quantity of 5
