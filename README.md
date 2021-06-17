@@ -1,8 +1,7 @@
-## Title
-
-HerbMeHome - Next.JS e-commerce store
+## HerbMeHome - Next.JS e-commerce store
 
 ![alt text](/public/images/home.jpg?raw=true 'HerbMeHome Store')
+
 ![alt text](/public/images/thankyou2.jpg?raw=true 'HerbMeHome Store')
 
 ## Description
