@@ -34,9 +34,10 @@ const headerStyles = css`
   display: flex;
   align-items: center;
   height: 50px;
+  width: 100vw;
   padding: 10px 15px;
 
-  a:nth-of-type(-n + 3) {
+  .navBar {
     margin-left: 30px;
     position: relative;
     text-transform: uppercase;
@@ -82,13 +83,13 @@ export default function Header(props: Props) {
   return (
     <header css={headerStyles}>
       <Link href="/">
-        <a>Home</a>
+        <a className="navBar">Home</a>
       </Link>
       <Link href="/products">
-        <a>Products</a>
+        <a className="navBar">Products</a>
       </Link>
       <Link href="/about">
-        <a>About</a>
+        <a className="navBar">About</a>
       </Link>
       <span>
         <img
