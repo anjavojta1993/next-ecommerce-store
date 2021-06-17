@@ -22,6 +22,17 @@ const pageContainer = css`
   margin: 0 auto; */
 `;
 
+const pageContainerNoItems = css`
+  display: flex;
+  height: 100vh;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  align-items: center;
+  justify-content: center;
+  /* margin-top: 25px;
+  margin: 0 auto; */
+`;
+
 const heroHeading = css`
   display: flex;
   justify-content: center;
@@ -331,7 +342,7 @@ export default function Cart(props: Props) {
   if (productsInCart.length === 0) {
     return (
       <Layout shoppingCart={props.shoppingCart}>
-        <section css={pageContainer}>
+        <section css={pageContainerNoItems}>
           You have no items in your shopping cart.
         </section>
       </Layout>
