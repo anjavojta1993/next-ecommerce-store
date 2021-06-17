@@ -25,7 +25,7 @@ const customerInfoDataContainer = css`
   width: 50vw;
   margin-left: 20px;
   margin-right: 20px;
-  background-color: red;
+  //background-color: red;
   height: 95%;
   border: solid 2px gray;
   border-radius: 8px;
@@ -38,7 +38,7 @@ const rightContainer = css`
   width: 50vw;
   margin-left: 20px;
   margin-right: 20px;
-  background-color: orange;
+  //background-color: orange;
   flex-direction: column;
   height: 95%;
 
@@ -60,7 +60,7 @@ const totalSumContainer = css`
   display: flex;
   align-self: flex-start;
   height: 40vh;
-  background-color: yellow;
+  //background-color: yellow;
   border: solid 2px gray;
   border-radius: 8px;
   padding-right: 20px;
@@ -118,7 +118,7 @@ const leftContainer = css`
   width: 50vw;
   margin-left: 20px;
   margin-right: 20px;
-  background-color: green;
+  //background-color: green;
   flex-direction: column;
   height: 95%;
 
@@ -145,7 +145,8 @@ const buttonStyles = css`
   //border-radius: 8px;
   padding: 20px 30px;
   letter-spacing: 2px;
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   text-transform: uppercase;
 
   :hover {
@@ -490,7 +491,7 @@ export default function CheckoutPage(props) {
           <h1>Order Summary</h1>
 
           <div css={totalSumCalculation}>
-            <div>Subtotal:{totalSum} €</div>
+            <div>Subtotal: {totalSum} €</div>
             <div className="shipping-fee">Shipping fee: 0.00 €</div>
             <div className="total-sum">Total: {totalSum} €</div>
           </div>

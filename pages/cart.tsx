@@ -49,7 +49,6 @@ const leftContainer = css`
   width: 50vw;
   margin-left: 20px;
   margin-right: 20px;
-  //background-color: red;
   flex-direction: column;
   margin-left: 100px;
   //height: 500px;
@@ -166,7 +165,7 @@ const productQuantityContainer = css`
   flex-direction: column;
   width: 250px;
   height: 190px;
-  background-color: red;
+  //background-color: red;
   margin-right: 20px;
   align-items: center;
   justify-content: center;
@@ -192,7 +191,7 @@ const productSubtotalContainer = css`
   flex-direction: column;
   width: 250px;
   height: 190px;
-  background-color: green;
+  //background-color: green;
   margin-right: 20px;
   align-items: center;
   justify-content: center;
@@ -450,7 +449,7 @@ export default function Cart(props: Props) {
             <h1>Order Summary</h1>
 
             <div css={totalSumContainer}>
-              <div>Subtotal:{totalSum} €</div>
+              <div>Subtotal: {totalSum} €</div>
               <div className="shipping-fee">Shipping fee: 0.00 €</div>
               <div className="total-sum">Total: {totalSum} €</div>
               <div css={buttonContainer}>
