@@ -93,7 +93,7 @@ export default function Header(props: Props) {
       <span>
         <img
           css={logoStyles}
-          src="images/logo-green.svg"
+          src="/images/logo-green.svg"
           alt="logo with leaf"
         />
       </span>
@@ -103,7 +103,7 @@ export default function Header(props: Props) {
           <a data-cy="navigate-to-cart">
             <img
               css={shoppingCartStyles}
-              src="images/shopping-cart.png"
+              src="/images/shopping-cart.png"
               alt="shopping cart with counter"
             />
           </a>
