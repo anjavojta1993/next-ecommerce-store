@@ -266,9 +266,11 @@ export default function SingleProduct(props: Props) {
                 onChange={handleChangeQuantity}
               />
             </div>
-            <div css={buttonContainer}>
+            <div
+              css={buttonContainer}
+              data-cy="single-product-add-to-cart-button"
+            >
               <button
-                data-cy="single-product-add-to-cart-button"
                 css={buttonStyles}
                 onClick={() => {
                   props.setShoppingCart(

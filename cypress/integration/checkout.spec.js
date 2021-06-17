@@ -7,9 +7,9 @@ describe('Checkout flow from start to end', () => {
     // click on "Learn more" and go to product
     cy.get('[data-cy="single-product-learn-more"]').first().click();
     // check if add to cart button is visible
-    cy.get('[data-cy="single-product-add-to-cart-button"]').should(
-      'be.visible',
-    );
+    cy.get('[data-cy="single-product-add-to-cart-button"]', {
+      timeout: 8000,
+    }).should('be.visible');
     // click on Add to cart button
     cy.get('[data-cy="single-product-add-to-cart-button"]').click();
     // click on shopping bag icon in header
