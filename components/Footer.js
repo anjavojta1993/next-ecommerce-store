@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
-import { lightGrey } from '../util/sharedStyles';
+import { darkGrey, lightGrey } from '../util/sharedStyles';
 
 const footerStyles = css`
   display: flex;
@@ -11,6 +11,7 @@ const footerStyles = css`
   bottom: 0; */
   width: 100%;
   height: 50px;
+  border-top: 1px solid ${darkGrey};
 
   a {
     margin-left: 30px;
