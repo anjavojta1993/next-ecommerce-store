@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Layout from '../components/Layout';
-import { darkBrown, lightRose, rose } from '../util/sharedStyles';
 
 const pageContainer = css`
   display: flex;
