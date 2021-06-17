@@ -12,14 +12,14 @@ import { darkBrown, darkGrey, rose } from '../util/sharedStyles';
 
 const pageContainer = css`
   display: flex;
-  /* height: 100vh;
-  width: 100vw; */
+  /* height: 100vh; */
+  height: 100%;
   padding-top: 50px;
   padding-bottom: 50px;
   align-items: center;
   justify-content: center;
-  margin-top: 25px;
-  margin: 0 auto;
+  /* margin-top: 25px;
+  margin: 0 auto; */
 `;
 
 const heroHeading = css`
@@ -41,7 +41,7 @@ const leftContainer = css`
   //background-color: red;
   flex-direction: column;
   margin-left: 100px;
-  height: 500px;
+  //height: 500px;
   //border: solid 2px gray;
   border-radius: 8px;
 
