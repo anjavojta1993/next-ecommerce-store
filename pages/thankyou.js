@@ -52,7 +52,7 @@ export default function About(props) {
         <title>Thank you</title>
       </Head>
       <div css={pageContainer}>
-        <div css={pageHeading}>Thank you for your purchase!</div>
+        <div css={pageHeading}>Thank you for your purchase &#9829;</div>
       </div>
     </Layout>
   );
