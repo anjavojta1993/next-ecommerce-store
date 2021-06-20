@@ -46,24 +46,27 @@ const heroHeadingContainer = css`
     font-size: 24px;
     line-height: 1.3em;
     letter-spacing: 1px;
+    margin-bottom: 20px;
   }
+`;
 
-  button {
+const buttonStyles = css`
+  display: inline-block;
+  margin-bottom: 20px;
+  color: white;
+  background-color: ${rose};
+  font-size: 16px;
+  font-weight: 300;
+  border: none;
+  border-radius: 8px;
+  padding: 20px 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  :hover {
+    background-color: ${darkBrown};
     color: white;
-    background-color: ${rose};
-    font-size: 16px;
-    font-weight: 300;
-    border: none;
-    border-radius: 8px;
-    padding: 20px 30px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-    :hover {
-      background-color: ${darkBrown};
-      color: white;
-      cursor: pointer;
-    }
+    cursor: pointer;
   }
 `;
 
@@ -88,9 +91,7 @@ export default function Hero() {
             them grow from your home.
           </h2>
           <Link href="/products/">
-            <a>
-              <button>Shop now</button>
-            </a>
+            <a css={buttonStyles}>Shop now</a>
           </Link>
         </div>
       </div>

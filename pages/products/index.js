@@ -102,7 +102,9 @@ const priceContainer = css`
 `;
 
 const buttonContainer = css`
-  button {
+  a {
+    display: inline-block;
+    text-decoration: none;
     color: white;
     background-color: ${rose};
     font-size: 16px;
@@ -155,9 +157,7 @@ export default function Products(props) {
                     </div>
                     <div css={buttonContainer}>
                       <Link href={`/products/${product.id}`}>
-                        <a data-cy="single-product-learn-more">
-                          <button>Learn more</button>
-                        </a>
+                        <a data-cy="single-product-learn-more">Learn more</a>
                       </Link>
                     </div>
 
