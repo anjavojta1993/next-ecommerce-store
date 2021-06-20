@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import { css } from '@emotion/react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { darkBrown, rose } from '../util/sharedStyles';
 
 const heroStyles = css`
@@ -68,7 +68,6 @@ const heroHeadingContainer = css`
 `;
 
 export default function Hero() {
-  const router = useRouter();
   return (
     <>
       <Head>
@@ -88,9 +87,11 @@ export default function Hero() {
             Get locally sourced, organic herbs delivered to your door and watch
             them grow from your home.
           </h2>
-          <button type="button" onClick={() => router.push('/products/')}>
-            Shop now
-          </button>
+          <Link href="/products/">
+            <a>
+              <button>Shop now</button>
+            </a>
+          </Link>
         </div>
       </div>
     </>

@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 import Layout from '../../components/Layout';
 import { darkBrown, lightRose, rose } from '../../util/sharedStyles';
 
@@ -125,7 +125,6 @@ const buttonContainer = css`
 // Props will come from getServerSide props object
 // below
 export default function Products(props) {
-  const router = useRouter();
   return (
     <Layout
       shoppingCart={props.shoppingCart}
@@ -155,13 +154,11 @@ export default function Products(props) {
                       {product.price / 100} {product.currency}
                     </div>
                     <div css={buttonContainer}>
-                      <button
-                        data-cy="single-product-learn-more"
-                        type="button"
-                        onClick={() => router.push(`/products/${product.id}`)}
-                      >
-                        Learn more
-                      </button>
+                      <Link href={`/products/${product.id}`}>
+                        <a data-cy="single-product-learn-more">
+                          <button>Learn more</button>
+                        </a>
+                      </Link>
                     </div>
 
                     {/* end of products container */}

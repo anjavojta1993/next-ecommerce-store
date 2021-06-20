@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { Dispatch, SetStateAction, useState } from 'react';
 import Layout from '../components/Layout';
 import {
@@ -324,7 +324,6 @@ type Props = {
 
 export default function Cart(props: Props) {
   console.log('props', props);
-  const router = useRouter();
 
   const [productsInCart, setProductsInCart] = useState(props.productsInCart);
 
@@ -453,14 +452,11 @@ export default function Cart(props: Props) {
               <div className="shipping-fee">Shipping fee: 0.00 €</div>
               <div className="total-sum">Total: {totalSum} €</div>
               <div css={buttonContainer}>
-                <button
-                  data-cy="checkout-button"
-                  css={buttonStyles}
-                  type="button"
-                  onClick={() => router.push('/checkout/')}
-                >
-                  Checkout
-                </button>
+                <Link href="/checkout/">
+                  <a data-cy="checkout-button">
+                    <button css={buttonStyles}>Checkout</button>
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
